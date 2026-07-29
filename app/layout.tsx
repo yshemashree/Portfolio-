@@ -1,29 +1,37 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
-const fraunces = Fraunces({
+const display = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-display",
   display: "swap",
+  weight: ["400", "500", "700"],
 });
 
-const inter = Inter({
+const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://yshemashree.com"),
-  title: "Y S Hemashree — Computer Science × Product × AI",
+  title: "Y S Hemashree — AI, translated into decisions",
   description:
-    "Y S Hemashree is a computer science student, product builder, AI enthusiast, and national hackathon winner. A quiet, handcrafted exhibition of her work.",
+    "I make advanced AI legible and actionable for the people who have to decide with it — product management, AI agents, and applied ML, built for the bridge between business and technology.",
   openGraph: {
-    title: "Y S Hemashree — Computer Science × Product × AI",
+    title: "Y S Hemashree — AI, translated into decisions",
     description:
-      "A quiet, handcrafted exhibition — computer science, product building, and applied AI.",
+      "I make advanced AI legible and actionable for the people who have to decide with it.",
     type: "website",
   },
 };
@@ -34,8 +42,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
-      <body className="bg-ivory text-navy font-sans antialiased selection:bg-navy selection:text-ivory">
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+      <body className="bg-canvas text-ink font-sans antialiased selection:bg-signal selection:text-canvas">
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>

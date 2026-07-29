@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  background: #f7f3ea;
+  background: #08090b;
   scroll-behavior: auto;
 }
 
@@ -24,8 +24,8 @@ body {
 }
 
 ::selection {
-  background: #131c2e;
-  color: #f7f3ea;
+  background: #3fe0f5;
+  color: #08090b;
 }
 
 /* thin, quiet scrollbar */
@@ -36,7 +36,7 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(19, 28, 46, 0.18);
+  background: rgba(63, 224, 245, 0.22);
   border-radius: 999px;
 }
 
@@ -55,12 +55,14 @@ body {
   text-wrap: balance;
 }
 
+/* fine grain texture for a tactile, non-flat dark canvas */
 .grain-overlay {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  opacity: 0.05;
-  mix-blend-mode: multiply;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .underline-hover {
@@ -72,4 +74,9 @@ body {
 }
 .underline-hover:hover {
   background-size: 100% 1px;
+}
+
+/* tabular numerals for stat/metric treatment */
+.tabular {
+  font-variant-numeric: tabular-nums;
 }

@@ -9,38 +9,55 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ivory: "#F7F3EA",
-        cream: "#F1EADC",
-        warmwhite: "#FBF8F2",
-        navy: "#131C2E",
-        indigo: {
-          DEFAULT: "#22335A",
-          deep: "#161F38",
+        canvas: "#08090B",
+        graphite: {
+          DEFAULT: "#0D0F12",
+          raised: "#14171B",
+          line: "#22262C",
         },
-        sky: {
-          DEFAULT: "#5C7FA6",
-          muted: "#8AA3C0",
-          pale: "#C9D8E6",
+        ink: "#F2F4F6",
+        mist: {
+          DEFAULT: "#9BA3AD",
+          dim: "#666E77",
         },
-        slate: {
-          ink: "#2B2F36",
+        signal: {
+          DEFAULT: "#3FE0F5",
+          soft: "#7FEBFA",
+          deep: "#1F8FE0",
+          ember: "#FF8A4C",
         },
-        cloud: "#FDFCF9",
-        graywarm: "#EDE7DA",
-        tabby: "#C97A3D",
-        tabbydeep: "#A85F2A",
       },
       fontFamily: {
-        serif: ["var(--font-serif)", "Georgia", "serif"],
+        display: ["var(--font-display)", "Helvetica Neue", "Arial", "sans-serif"],
         sans: ["var(--font-sans)", "Helvetica Neue", "Arial", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       letterSpacing: {
-        widest2: "0.32em",
-        widest3: "0.42em",
+        widest2: "0.28em",
+        widest3: "0.4em",
       },
       transitionTimingFunction: {
-        luxury: "cubic-bezier(0.16, 1, 0.3, 1)",
-        silk: "cubic-bezier(0.65, 0, 0.35, 1)",
+        precise: "cubic-bezier(0.16, 1, 0.3, 1)",
+        snap: "cubic-bezier(0.65, 0, 0.35, 1)",
+      },
+      keyframes: {
+        drift: {
+          "0%, 100%": { transform: "translate3d(0,0,0)" },
+          "50%": { transform: "translate3d(0,-10px,0)" },
+        },
+        emberRise: {
+          "0%": { transform: "translate3d(0,0,0) scale(0.9)", opacity: "0" },
+          "12%": { opacity: "1" },
+          "100%": { transform: "translate3d(var(--drift-x, 6px), -140px, 0) scale(1.1)", opacity: "0" },
+        },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.55", transform: "scale(1)" },
+          "50%": { opacity: "0.9", transform: "scale(1.06)" },
+        },
+      },
+      animation: {
+        drift: "drift 6s ease-in-out infinite",
+        pulseGlow: "pulseGlow 4s ease-in-out infinite",
       },
     },
   },

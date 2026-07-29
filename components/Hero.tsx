@@ -2,21 +2,19 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import BackgroundClouds from "@/components/BackgroundClouds";
-import PaperPlanes from "@/components/PaperPlanes";
+import SignalField from "@/components/SignalField";
+import AvatarGlow from "@/components/AvatarGlow";
 import Navigation from "@/components/Navigation";
-import RightSidebar from "@/components/RightSidebar";
-import Artwork from "@/components/Artwork";
-import { SITE } from "@/lib/constants";
+import { HERO } from "@/lib/constants";
 
 export default function Hero() {
-  const cloudsWrapRef = useRef<HTMLDivElement>(null);
-  const frameRef = useRef<HTMLDivElement>(null);
-  const eyebrowRef = useRef<HTMLParagraphElement>(null);
-  const nameRef = useRef<HTMLHeadingElement>(null);
-  const captionRef = useRef<HTMLParagraphElement>(null);
-  const sidebarRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
+  const eyebrowRef = useRef<HTMLParagraphElement>(null);
+  const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const subRef = useRef<HTMLParagraphElement>(null);
+  const roleRef = useRef<HTMLParagraphElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const fieldRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
@@ -24,51 +22,33 @@ export default function Hero() {
     ).matches;
 
     const els = [
-      cloudsWrapRef.current,
-      frameRef.current,
-      eyebrowRef.current,
-      nameRef.current,
-      captionRef.current,
-      sidebarRef.current,
       navRef.current,
+      eyebrowRef.current,
+      ...lineRefs.current,
+      subRef.current,
+      roleRef.current,
+      avatarRef.current,
+      fieldRef.current,
     ];
 
     if (prefersReduced || els.some((el) => !el)) {
-      els.forEach((el) => {
-        if (el) gsap.set(el, { clearProps: "all" });
-      });
+      els.forEach((el) => el && gsap.set(el, { clearProps: "all" }));
       return;
     }
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    tl.to(cloudsWrapRef.current, {
-      opacity: 1,
-      duration: 1.4,
-      ease: "sine.out",
-    })
+    tl.to(fieldRef.current, { opacity: 1, duration: 1.6, ease: "sine.out" })
+      .to(navRef.current, { opacity: 1, duration: 0.8 }, 0.3)
+      .to(eyebrowRef.current, { opacity: 1, y: 0, duration: 0.7 }, 0.5)
       .to(
-        frameRef.current,
-        { opacity: 1, scale: 1, duration: 1.5, ease: "power4.out" },
-        0.35
+        lineRefs.current,
+        { opacity: 1, y: 0, duration: 0.85, stagger: 0.1 },
+        0.65
       )
-      .to(navRef.current, { opacity: 1, duration: 0.9 }, 0.6)
-      .to(
-        eyebrowRef.current,
-        { opacity: 1, y: 0, duration: 0.9 },
-        1.15
-      )
-      .to(
-        nameRef.current,
-        { opacity: 1, y: 0, duration: 1.0 },
-        1.3
-      )
-      .to(
-        captionRef.current,
-        { opacity: 1, y: 0, duration: 0.9 },
-        1.55
-      )
-      .to(sidebarRef.current, { opacity: 1, duration: 1.0 }, 1.85);
+      .to(subRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.3")
+      .to(roleRef.current, { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
+      .to(avatarRef.current, { opacity: 1, scale: 1, duration: 1.1 }, 0.7);
 
     return () => {
       tl.kill();
@@ -78,62 +58,65 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-ivory"
+      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-canvas"
     >
-      <div ref={cloudsWrapRef} className="absolute inset-0 opacity-0">
-        <BackgroundClouds />
-        <PaperPlanes />
+      <div ref={fieldRef} className="absolute inset-0 opacity-0">
+        <SignalField />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent_0%,#08090B_78%)]" />
       </div>
 
       <div ref={navRef} className="opacity-0">
         <Navigation />
       </div>
 
-      <div className="relative z-20 flex flex-1 flex-col px-6 pb-8 pt-24 sm:px-10 sm:pt-28 lg:px-16">
-        <div className="flex flex-1 flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
-          <div className="flex justify-center lg:w-[60%] lg:justify-start">
-            <div
-              ref={frameRef}
-              className="w-full max-w-[300px] scale-[1.05] border border-navy/15 bg-warmwhite p-2 opacity-0 shadow-[0_40px_90px_-45px_rgba(19,28,46,0.45)] sm:max-w-[380px] sm:p-3 lg:ml-[6%] lg:max-w-[430px]"
-            >
-              <div className="relative aspect-[620/820] w-full overflow-hidden bg-sky">
-                <Artwork />
-              </div>
-            </div>
-          </div>
-
-          <div
-            ref={sidebarRef}
-            className="flex justify-center opacity-0 lg:w-[28%] lg:justify-end"
-          >
-            <RightSidebar />
-          </div>
-        </div>
-
-        <div className="mt-10 flex flex-col items-center text-center lg:mt-6 lg:items-start lg:pl-[6%] lg:text-left">
+      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center gap-14 px-6 pt-28 pb-16 sm:px-10 lg:flex-row lg:items-center lg:gap-10 lg:px-14 lg:pt-24">
+        <div className="lg:w-[58%]">
           <p
             ref={eyebrowRef}
-            className="translate-y-3 font-sans text-[10px] uppercase tracking-[0.42em] text-navy/50 opacity-0 sm:text-[11px]"
+            className="translate-y-3 font-mono text-[11px] uppercase tracking-widest2 text-signal opacity-0"
           >
-            Portfolio &mdash; No. 001
+            {HERO.eyebrow}
           </p>
-          <h1
-            ref={nameRef}
-            className="mt-3 translate-y-4 text-balance font-serif text-[13vw] font-medium uppercase leading-[0.92] tracking-tight text-navy opacity-0 sm:text-[9vw] lg:text-[5.6vw]"
-          >
-            {SITE.name}
+
+          <h1 className="mt-6 text-balance font-display text-[11vw] font-medium leading-[1.02] tracking-tight text-ink sm:text-6xl lg:text-[4.4vw]">
+            {HERO.headlineLines.map((line, i) => (
+              <span
+                key={line}
+                ref={(el) => {
+                  lineRefs.current[i] = el;
+                }}
+                className="block translate-y-6 opacity-0"
+              >
+                {line}
+              </span>
+            ))}
           </h1>
+
           <p
-            ref={captionRef}
-            className="mt-4 translate-y-3 font-sans text-xs uppercase tracking-[0.34em] text-navy/55 opacity-0 sm:text-sm"
+            ref={subRef}
+            className="mt-8 max-w-lg translate-y-4 text-balance text-base leading-relaxed text-mist opacity-0 sm:text-lg"
           >
-            {SITE.caption}
+            {HERO.sub}
           </p>
+
+          <p
+            ref={roleRef}
+            className="mt-6 translate-y-3 font-mono text-[11px] uppercase tracking-widest2 text-mist-dim opacity-0"
+          >
+            {HERO.role}
+          </p>
+        </div>
+
+        <div
+          ref={avatarRef}
+          className="mx-auto w-full max-w-[300px] scale-95 opacity-0 sm:max-w-[340px] lg:w-[34%] lg:max-w-[380px]"
+        >
+          <AvatarGlow />
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 flex justify-center lg:hidden">
-        <span className="h-8 w-px animate-pulse bg-navy/25" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-8 z-20 flex justify-center">
+        <span className="h-10 w-px bg-gradient-to-b from-transparent via-mist-dim to-transparent" />
       </div>
     </section>
   );

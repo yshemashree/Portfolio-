@@ -1,55 +1,76 @@
-import { FOCUS_AREAS, RECOGNITION } from "@/lib/constants";
+import { PROJECTS } from "@/lib/constants";
 import RevealSection from "@/components/RevealSection";
 
 export default function Work() {
   return (
     <RevealSection
       id="work"
-      className="border-t border-navy/10 bg-cream px-6 py-24 sm:px-10 sm:py-32 lg:px-16"
+      className="border-t border-graphite-line bg-canvas px-6 py-24 sm:px-10 sm:py-32 lg:px-14"
     >
       <div className="mx-auto max-w-6xl">
         <p
           data-reveal
-          className="font-sans text-[11px] uppercase tracking-[0.32em] text-navy/45"
+          className="font-mono text-[11px] uppercase tracking-widest2 text-signal"
         >
-          Fields of Work
+          Proof, Not a Project List
         </p>
+        <h2
+          data-reveal
+          className="mt-6 max-w-2xl text-balance font-display text-3xl font-medium leading-tight text-ink sm:text-4xl"
+        >
+          Each one starts as a hard AI problem and ends as a decision someone outside the field can make.
+        </h2>
 
-        <div className="mt-10 divide-y divide-navy/10 border-t border-navy/10">
-          {FOCUS_AREAS.map((area) => (
+        <div className="mt-16 divide-y divide-graphite-line border-t border-graphite-line">
+          {PROJECTS.map((project) => (
             <div
-              key={area.index}
+              key={project.id}
               data-reveal
-              className="group grid grid-cols-[auto,1fr] items-baseline gap-x-6 gap-y-2 py-8 sm:grid-cols-[64px,1fr,1.4fr] sm:items-start sm:py-10"
+              className="group grid grid-cols-1 gap-8 py-12 sm:py-14 lg:grid-cols-[minmax(0,280px)_1fr]"
             >
-              <span className="font-serif text-sm text-navy/40">
-                {area.index}
-              </span>
-              <h3 className="font-serif text-2xl text-navy transition-colors duration-500 sm:text-3xl">
-                {area.title}
-              </h3>
-              <p className="col-span-2 max-w-md font-sans text-sm leading-relaxed text-navy/60 sm:col-span-1 sm:text-base">
-                {area.description}
-              </p>
+              <div>
+                <span className="font-mono text-xs text-mist-dim">
+                  {project.index}
+                </span>
+                <h3 className="mt-3 font-display text-2xl font-medium text-ink transition-colors duration-500 group-hover:text-signal sm:text-3xl">
+                  {project.name}
+                </h3>
+                <p className="mt-2 font-mono text-[11px] uppercase tracking-widest2 text-signal/80">
+                  {project.tag}
+                </p>
+                <p className="mt-5 max-w-xs text-xs leading-relaxed text-mist-dim">
+                  {project.stack}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-widest2 text-mist-dim">
+                    The problem
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-mist">
+                    {project.problem}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-widest2 text-mist-dim">
+                    The translation
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-mist">
+                    {project.translation}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-widest2 text-mist-dim">
+                    The outcome
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/90">
+                    {project.outcome}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
-        </div>
-
-        <div
-          data-reveal
-          className="mt-20 flex flex-col gap-6 border-t border-navy/10 pt-16 sm:mt-24 sm:flex-row sm:items-end sm:justify-between sm:pt-20"
-        >
-          <div className="max-w-xl">
-            <p className="font-sans text-[11px] uppercase tracking-[0.32em] text-tabbydeep">
-              {RECOGNITION.eyebrow}
-            </p>
-            <h3 className="mt-4 text-balance font-serif text-3xl font-medium leading-tight text-navy sm:text-4xl">
-              {RECOGNITION.title}
-            </h3>
-            <p className="mt-4 max-w-lg font-sans text-sm leading-relaxed text-navy/60 sm:text-base">
-              {RECOGNITION.description}
-            </p>
-          </div>
         </div>
       </div>
     </RevealSection>
