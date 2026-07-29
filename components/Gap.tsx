@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform, MotionValue } from "framer-motion";
 import { GAP } from "@/lib/constants";
 
 // Fixed placement so noise fragments scatter deterministically (no
@@ -20,120 +19,90 @@ const LAYOUT = [
   { left: "14%", top: "84%", rotate: -4 },
 ];
 
+function NoiseFragment({
+  progress,
+  index,
+  text,
+}: {
+  progress: MotionValue<number>;
+  index: number;
+  text: string;
+}) {
+  const layout = LAYOUT[index % LAYOUT.length];
+  const start = 0.04 + (index % LAYOUT.length) * 0.018;
+  const end = start + 0.26;
+  const opacity = useTransform(progress, [0, start, end], [0.5, 0.5, 0]);
+  const y = useTransform(progress, [start, end], [0, -30]);
+  const scale = useTransform(progress, [start, end], [1, 0.9]);
+
+  return (
+    <motion.span
+      className="absolute whitespace-nowrap font-mono text-xs text-mist-dim sm:text-sm"
+      style={{
+        left: layout.left,
+        top: layout.top,
+        rotate: layout.rotate,
+        opacity,
+        y,
+        scale,
+      }}
+    >
+      {text}
+    </motion.span>
+  );
+}
+
 /**
- * The one set-piece of the site: a scroll-scrubbed sequence where dense,
+ * The one set-piece of the site: a scroll-linked sequence where dense,
  * noisy technical fragments resolve into a single legible statement.
- * Sticky-positioned viewport + scrub timeline, no GSAP pin — avoids
- * pin-spacer edge cases with Lenis smooth scroll.
+ * Driven by Framer Motion's useScroll + a damped useSpring, so the
+ * resolve visibly trails the raw scroll position instead of snapping to
+ * it — that spring lag is the whole point.
  */
 export default function Gap() {
   const sectionRef = useRef<HTMLElement>(null);
-  const noiseRef = useRef<HTMLDivElement>(null);
-  const resolvedRef = useRef<HTMLDivElement>(null);
-  const bodyRef = useRef<HTMLParagraphElement>(null);
-  const fragmentRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 55,
+    damping: 20,
+    mass: 0.6,
+  });
 
-  useEffect(() => {
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (
-      prefersReduced ||
-      !sectionRef.current ||
-      !noiseRef.current ||
-      !resolvedRef.current
-    ) {
-      gsap.set(fragmentRefs.current, { opacity: 0.5 });
-      gsap.set(resolvedRef.current, { opacity: 1, scale: 1 });
-      gsap.set(bodyRef.current, { opacity: 1, y: 0 });
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.6,
-        },
-      });
-
-      tl.to(fragmentRefs.current, {
-        opacity: 0,
-        y: -30,
-        scale: 0.9,
-        stagger: 0.03,
-        ease: "power1.in",
-        duration: 0.4,
-      })
-        .to(
-          resolvedRef.current,
-          { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" },
-          "-=0.2"
-        )
-        .to(
-          bodyRef.current,
-          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-          "-=0.15"
-        );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const resolvedOpacity = useTransform(progress, [0.4, 0.6], [0, 1]);
+  const resolvedScale = useTransform(progress, [0.4, 0.6], [0.94, 1]);
+  const bodyOpacity = useTransform(progress, [0.58, 0.78], [0, 1]);
+  const bodyY = useTransform(progress, [0.58, 0.78], [16, 0]);
 
   return (
-    <section
-      ref={sectionRef}
-      id="gap"
-      className="relative h-[220vh] bg-canvas"
-    >
+    <section ref={sectionRef} id="gap" className="relative h-[220vh] bg-canvas">
       <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden px-6">
         <p className="absolute top-24 font-mono text-[11px] uppercase tracking-widest2 text-signal">
           {GAP.eyebrow}
         </p>
 
-        <div
-          ref={noiseRef}
-          className="pointer-events-none absolute inset-0 flex items-center justify-center"
-        >
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           {GAP.noise.map((fragment, i) => (
-            <span
-              key={fragment}
-              ref={(el) => {
-                fragmentRefs.current[i] = el;
-              }}
-              className="absolute whitespace-nowrap font-mono text-xs text-mist-dim sm:text-sm"
-              style={{
-                left: LAYOUT[i % LAYOUT.length].left,
-                top: LAYOUT[i % LAYOUT.length].top,
-                transform: `rotate(${LAYOUT[i % LAYOUT.length].rotate}deg)`,
-                opacity: 0.5,
-              }}
-            >
-              {fragment}
-            </span>
+            <NoiseFragment key={fragment} progress={progress} index={i} text={fragment} />
           ))}
         </div>
 
-        <div
-          ref={resolvedRef}
-          className="relative z-10 max-w-3xl text-center opacity-0"
-          style={{ transform: "scale(0.94)" }}
+        <motion.div
+          className="relative z-10 max-w-3xl text-center"
+          style={{ opacity: resolvedOpacity, scale: resolvedScale }}
         >
           <h2 className="text-balance font-display text-3xl font-medium leading-tight text-ink sm:text-4xl lg:text-5xl">
             {GAP.resolved}
           </h2>
-          <p
-            ref={bodyRef}
-            className="mx-auto mt-8 max-w-xl translate-y-3 text-balance text-base leading-relaxed text-mist opacity-0 sm:text-lg"
+          <motion.p
+            className="mx-auto mt-8 max-w-xl text-balance text-base leading-relaxed text-mist sm:text-lg"
+            style={{ opacity: bodyOpacity, y: bodyY }}
           >
             {GAP.body}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </div>
     </section>
   );

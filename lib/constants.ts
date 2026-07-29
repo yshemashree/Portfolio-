@@ -48,9 +48,9 @@ export type Project = {
   name: string;
   tag: string;
   stack: string;
-  problem: string;
-  translation: string;
+  summary: string;
   outcome: string;
+  image?: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -59,48 +59,40 @@ export const PROJECTS: Project[] = [
     index: "01",
     name: "Contexta",
     tag: "Threat Intelligence → Business Risk",
-    stack: "FastAPI · SQLAlchemy · NetworkX · Isolation Forest · LSTM Autoencoder · XGBoost · Gemini API · Next.js",
-    problem:
-      "A 5-agent SOC platform hitting 89.99% ROC-AUC — technically strong, but illegible to the C-suite buyers who actually approve security spend.",
-    translation:
-      "Designed a Business-Weighted Value Scoring layer (BWVS) that converts raw threat telemetry into a single business risk score, with a dual-persona interface so analysts and executives read the same event differently.",
-    outcome: "1st Place — Cybershield'26 (MeitY), judged on product narrative and legibility, not just detection accuracy.",
+    stack: "FastAPI · NetworkX · XGBoost · Gemini API · Next.js",
+    summary:
+      "A 5-agent SOC platform (89.99% ROC-AUC) with a business risk scoring layer that lets C-suite buyers read the same threat event analysts do.",
+    outcome: "1st Place — Cybershield'26 (MeitY)",
   },
   {
     id: "vigil",
     index: "02",
     name: "VIGIL",
     tag: "Clinical Triage → Trusted Decisions",
-    stack: "XGBoost · Scikit-learn · SHAP · FastAPI · Next.js · PostgreSQL",
-    problem:
-      "An AI triage model reaching 87.4% risk-classification accuracy on 27,500+ patient samples — but a hospital won't act on a number it can't interrogate.",
-    translation:
-      "Co-designed the system with hospital stakeholders and added SHAP explainability throughout, so non-technical medical staff can see *why* the model flagged a patient, not just that it did.",
-    outcome: "Adopted as a decision-support layer clinicians could actually question and trust.",
+    stack: "XGBoost · SHAP · FastAPI · Next.js",
+    summary:
+      "AI triage at 87.4% accuracy on 27,500+ patients, co-designed with hospital staff with full SHAP explainability behind every flag.",
+    outcome: "Adopted as clinical decision support",
   },
   {
     id: "brandscope",
     index: "03",
     name: "BrandScope",
     tag: "Market Research → Ready-to-Send Outreach",
-    stack: "FastAPI · GPT-4o · Hunter.io · Apify · Vanilla.js · three.js · Railway",
-    problem:
-      "Verified brand intelligence and personalised outreach normally takes a researcher hours per prospect — too slow for a scaling team to act on.",
-    translation:
-      "Engineered 12 parallel and sequential intelligence pipelines inside a zero-hallucination framework, so the output is something a founder can send, not just something a model generated.",
-    outcome: "2nd Place — StepOneXP National Industry-Level AI Buildathon, built directly against founder and client expectations.",
+    stack: "FastAPI · GPT-4o · Apify · three.js",
+    summary:
+      "12 pipelines in a zero-hallucination framework, turning hours of prospect research into ready-to-send outreach in under 2 minutes.",
+    outcome: "2nd Place — StepOneXP AI Buildathon",
   },
   {
     id: "fdx",
     index: "04",
     name: "FDX",
     tag: "Deep Technical Depth, No Translation Needed",
-    stack: "ONNX Runtime · CUDA/cuDNN · MTCNN · RetinaFace · AdaFace IR101 · Computer Vision",
-    problem:
-      "Prove the engineering underneath the translation is real — a GPU-accelerated face recognition system with no cloud, database, or Docker dependency.",
-    translation:
-      "A custom pose-bridging engine expands a single reference photo into a full identity profile across angle, lighting, and image quality, matched at a 0.9 similarity threshold.",
-    outcome: "The one project built for engineers, by design — proof the simplicity elsewhere is a choice, not a ceiling.",
+    stack: "ONNX · CUDA · RetinaFace · AdaFace",
+    summary:
+      "Offline GPU-accelerated face recognition — a custom pose-bridging engine expands one photo into a full identity profile at a 0.9 similarity threshold.",
+    outcome: "Proof the simplicity elsewhere is a choice",
   },
 ];
 
@@ -115,25 +107,24 @@ export const ALTITUDE: Milestone[] = [
     eyebrow: "IIT Madras · AI Smart Digital National Innovation Challenge",
     title: "Presented AI governance policy before the Chief Justice of the Madras High Court",
     description:
-      "1st Place. Formulated six AI governance policies and translated complex technical research into executive-ready recommendations on responsible AI, presented live to the Chief Justice on the governance initiatives a nation should take.",
+      "1st Place. Six AI governance policies, translated into executive-ready recommendations for the nation.",
   },
   {
     eyebrow: "Ministry of Electronics & IT (MeitY) · Cybershield'26",
     title: "Won a national hackathon judged on product narrative, not just accuracy",
     description:
-      "1st Place. Built and positioned Contexta using dual-persona design and a business risk scoring engine — recognised specifically for making technical threat data legible to non-technical buyers.",
+      "1st Place. Contexta, recognised for making technical threat data legible to non-technical buyers.",
   },
   {
     eyebrow: "StepOneXP · Product Management & AI Automation",
     title: "Leading a decision-intelligence system modelling a founder's judgment",
     description:
-      "Team Lead for Project 'Brain' — architecting a retrieval + reasoning pipeline that surfaces precedent from past company decisions, working directly with the founder and prospective clients to validate outputs.",
+      "Team Lead, Project 'Brain' — a retrieval + reasoning pipeline built directly with the founder and clients.",
   },
   {
     eyebrow: "IEEE Conference",
     title: "Published research on hybrid ML fraud detection",
-    description:
-      "Authored TRAP (Transaction Risk Assessment Prevention), a hybrid ML-based fraud detection model for bank servers, for a global academic audience.",
+    description: "TRAP — a hybrid ML fraud detection model for bank servers.",
   },
 ];
 
@@ -143,7 +134,7 @@ export const ABOUT_STATEMENT = [
 ];
 
 export const ABOUT_PARAGRAPH =
-  "I'm a Computer Science & Business Systems student who operates in both rooms at once — comfortable discussing isolation forests and ROC-AUC with an ML team, and just as comfortable translating that same system into a decision a founder, clinician, or judge can act on. That's not a compromise between technical and business — it's the actual skill: making powerful, opaque systems legible enough to be trusted. I've led a 58-member organisation, spoken publicly on AI governance before the Chief Justice of the Madras High Court, published IEEE research, and worked directly with founders scoping what their AI should decide. The throughline is always the same — translation, not just construction.";
+  "Computer Science & Business Systems. Comfortable with an ML team discussing ROC-AUC, and just as comfortable translating the same system into a decision a founder, clinician, or judge can act on. Led a 58-member org, spoke on AI governance before the Chief Justice of the Madras High Court, published IEEE research. Same throughline every time — translation, not just construction.";
 
 export const FOCUS_AREAS = [
   {

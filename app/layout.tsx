@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import CursorTrail from "@/components/CursorTrail";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -44,7 +46,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body className="bg-canvas text-ink font-sans antialiased selection:bg-signal selection:text-canvas">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <MotionConfig reducedMotion="user">
+          <CursorTrail />
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </MotionConfig>
       </body>
     </html>
   );

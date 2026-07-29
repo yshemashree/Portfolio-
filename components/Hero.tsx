@@ -1,119 +1,105 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { motion, Variants } from "framer-motion";
 import SignalField from "@/components/SignalField";
 import AvatarGlow from "@/components/AvatarGlow";
 import Navigation from "@/components/Navigation";
 import { HERO } from "@/lib/constants";
 
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.15 },
+  },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 26 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 120, damping: 18, mass: 0.9 },
+  },
+};
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 1.1, ease: "easeOut" } },
+};
+
+const avatarIn: Variants = {
+  hidden: { opacity: 0, scale: 0.94 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { type: "spring", stiffness: 90, damping: 16, mass: 1 },
+  },
+};
+
 export default function Hero() {
-  const navRef = useRef<HTMLDivElement>(null);
-  const eyebrowRef = useRef<HTMLParagraphElement>(null);
-  const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const subRef = useRef<HTMLParagraphElement>(null);
-  const roleRef = useRef<HTMLParagraphElement>(null);
-  const avatarRef = useRef<HTMLDivElement>(null);
-  const fieldRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    const els = [
-      navRef.current,
-      eyebrowRef.current,
-      ...lineRefs.current,
-      subRef.current,
-      roleRef.current,
-      avatarRef.current,
-      fieldRef.current,
-    ];
-
-    if (prefersReduced || els.some((el) => !el)) {
-      els.forEach((el) => el && gsap.set(el, { clearProps: "all" }));
-      return;
-    }
-
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-    tl.to(fieldRef.current, { opacity: 1, duration: 1.6, ease: "sine.out" })
-      .to(navRef.current, { opacity: 1, duration: 0.8 }, 0.3)
-      .to(eyebrowRef.current, { opacity: 1, y: 0, duration: 0.7 }, 0.5)
-      .to(
-        lineRefs.current,
-        { opacity: 1, y: 0, duration: 0.85, stagger: 0.1 },
-        0.65
-      )
-      .to(subRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.3")
-      .to(roleRef.current, { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
-      .to(avatarRef.current, { opacity: 1, scale: 1, duration: 1.1 }, 0.7);
-
-    return () => {
-      tl.kill();
-    };
-  }, []);
-
   return (
     <section
       id="top"
       className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-canvas"
     >
-      <div ref={fieldRef} className="absolute inset-0 opacity-0">
+      <motion.div
+        className="absolute inset-0"
+        initial="hidden"
+        animate="show"
+        variants={fadeIn}
+      >
         <SignalField />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent_0%,#08090B_78%)]" />
-      </div>
+      </motion.div>
 
-      <div ref={navRef} className="opacity-0">
+      <motion.div initial="hidden" animate="show" variants={fadeIn}>
         <Navigation />
-      </div>
+      </motion.div>
 
-      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center gap-14 px-6 pt-28 pb-16 sm:px-10 lg:flex-row lg:items-center lg:gap-10 lg:px-14 lg:pt-24">
+      <motion.div
+        className="relative z-20 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center gap-14 px-6 pt-28 pb-16 sm:px-10 lg:flex-row lg:items-center lg:gap-10 lg:px-14 lg:pt-24"
+        initial="hidden"
+        animate="show"
+        variants={container}
+      >
         <div className="lg:w-[58%]">
-          <p
-            ref={eyebrowRef}
-            className="translate-y-3 font-mono text-[11px] uppercase tracking-widest2 text-signal opacity-0"
+          <motion.p
+            variants={fadeUp}
+            className="font-mono text-[11px] uppercase tracking-widest2 text-signal"
           >
             {HERO.eyebrow}
-          </p>
+          </motion.p>
 
           <h1 className="mt-6 text-balance font-display text-[11vw] font-medium leading-[1.02] tracking-tight text-ink sm:text-6xl lg:text-[4.4vw]">
-            {HERO.headlineLines.map((line, i) => (
-              <span
-                key={line}
-                ref={(el) => {
-                  lineRefs.current[i] = el;
-                }}
-                className="block translate-y-6 opacity-0"
-              >
+            {HERO.headlineLines.map((line) => (
+              <motion.span key={line} variants={fadeUp} className="block">
                 {line}
-              </span>
+              </motion.span>
             ))}
           </h1>
 
-          <p
-            ref={subRef}
-            className="mt-8 max-w-lg translate-y-4 text-balance text-base leading-relaxed text-mist opacity-0 sm:text-lg"
+          <motion.p
+            variants={fadeUp}
+            className="mt-8 max-w-lg text-balance text-base leading-relaxed text-mist sm:text-lg"
           >
             {HERO.sub}
-          </p>
+          </motion.p>
 
-          <p
-            ref={roleRef}
-            className="mt-6 translate-y-3 font-mono text-[11px] uppercase tracking-widest2 text-mist-dim opacity-0"
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 font-mono text-[11px] uppercase tracking-widest2 text-mist-dim"
           >
             {HERO.role}
-          </p>
+          </motion.p>
         </div>
 
-        <div
-          ref={avatarRef}
-          className="mx-auto w-full max-w-[300px] scale-95 opacity-0 sm:max-w-[340px] lg:w-[34%] lg:max-w-[380px]"
+        <motion.div
+          variants={avatarIn}
+          className="mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:w-[34%] lg:max-w-[380px]"
         >
           <AvatarGlow />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-8 z-20 flex justify-center">
         <span className="h-10 w-px bg-gradient-to-b from-transparent via-mist-dim to-transparent" />
