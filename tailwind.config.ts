@@ -54,10 +54,26 @@ const config: Config = {
           "0%, 100%": { opacity: "0.55", transform: "scale(1)" },
           "50%": { opacity: "0.9", transform: "scale(1.06)" },
         },
+        pulseGlowFast: {
+          "0%, 100%": { opacity: "0.75", transform: "scale(1.05)" },
+          "50%": { opacity: "1", transform: "scale(1.22)" },
+        },
+        ringBurst: {
+          "0%": { transform: "scale(0.55)", opacity: "0.9" },
+          "100%": { transform: "scale(2.1)", opacity: "0" },
+        },
+        eyeFlicker: {
+          "0%, 100%": { opacity: "0.9" },
+          "45%": { opacity: "1" },
+          "55%": { opacity: "0.6" },
+        },
       },
       animation: {
         drift: "drift 6s ease-in-out infinite",
         pulseGlow: "pulseGlow 4s ease-in-out infinite",
+        pulseGlowFast: "pulseGlowFast 1.1s ease-in-out infinite",
+        ringBurst: "ringBurst 0.9s cubic-bezier(0.16,1,0.3,1) forwards",
+        eyeFlicker: "eyeFlicker 0.6s ease-in-out infinite",
       },
     },
   },

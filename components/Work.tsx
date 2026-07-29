@@ -1,5 +1,6 @@
 import { PROJECTS } from "@/lib/constants";
 import RevealSection from "@/components/RevealSection";
+import Spotlight from "@/components/Spotlight";
 
 export default function Work() {
   return (
@@ -23,53 +24,51 @@ export default function Work() {
 
         <div className="mt-16 divide-y divide-graphite-line border-t border-graphite-line">
           {PROJECTS.map((project) => (
-            <div
-              key={project.id}
-              data-reveal
-              className="group grid grid-cols-1 gap-8 py-12 sm:py-14 lg:grid-cols-[minmax(0,280px)_1fr]"
-            >
-              <div>
-                <span className="font-mono text-xs text-mist-dim">
-                  {project.index}
-                </span>
-                <h3 className="mt-3 font-display text-2xl font-medium text-ink transition-colors duration-500 group-hover:text-signal sm:text-3xl">
-                  {project.name}
-                </h3>
-                <p className="mt-2 font-mono text-[11px] uppercase tracking-widest2 text-signal/80">
-                  {project.tag}
-                </p>
-                <p className="mt-5 max-w-xs text-xs leading-relaxed text-mist-dim">
-                  {project.stack}
-                </p>
-              </div>
+            <Spotlight key={project.id} data-reveal className="group">
+              <div className="grid grid-cols-1 gap-8 rounded-2xl px-4 py-12 transition-colors duration-500 hover:bg-graphite-raised/40 sm:py-14 lg:grid-cols-[minmax(0,280px)_1fr] lg:px-6">
+                <div>
+                  <span className="font-mono text-xs text-mist-dim">
+                    {project.index}
+                  </span>
+                  <h3 className="mt-3 font-display text-2xl font-medium text-ink transition-colors duration-500 group-hover:text-signal sm:text-3xl">
+                    {project.name}
+                  </h3>
+                  <p className="mt-2 font-mono text-[11px] uppercase tracking-widest2 text-signal/80">
+                    {project.tag}
+                  </p>
+                  <p className="mt-5 max-w-xs text-xs leading-relaxed text-mist-dim">
+                    {project.stack}
+                  </p>
+                </div>
 
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-widest2 text-mist-dim">
-                    The problem
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-mist">
-                    {project.problem}
-                  </p>
-                </div>
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-widest2 text-mist-dim">
-                    The translation
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-mist">
-                    {project.translation}
-                  </p>
-                </div>
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-widest2 text-mist-dim">
-                    The outcome
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/90">
-                    {project.outcome}
-                  </p>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-widest2 text-mist-dim">
+                      The problem
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-mist">
+                      {project.problem}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-widest2 text-mist-dim">
+                      The translation
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-mist">
+                      {project.translation}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-widest2 text-mist-dim">
+                      The outcome
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-ink/90">
+                      {project.outcome}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Spotlight>
           ))}
         </div>
       </div>

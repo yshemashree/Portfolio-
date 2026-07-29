@@ -1,5 +1,6 @@
 import { CONTACT, SITE } from "@/lib/constants";
 import RevealSection from "@/components/RevealSection";
+import Magnetic from "@/components/Magnetic";
 
 export default function Contact() {
   return (
@@ -24,12 +25,14 @@ export default function Contact() {
         </div>
 
         <div data-reveal className="flex flex-col items-start gap-4 sm:items-end">
-          <a
-            href={`mailto:${SITE.email}`}
-            className="underline-hover font-display text-xl text-ink sm:text-2xl"
-          >
-            {SITE.email}
-          </a>
+          <Magnetic>
+            <a
+              href={`mailto:${SITE.email}`}
+              className="underline-hover font-display text-xl text-ink transition-colors duration-300 hover:text-signal sm:text-2xl"
+            >
+              {SITE.email}
+            </a>
+          </Magnetic>
           <p className="font-mono text-[11px] uppercase tracking-widest2 text-mist-dim">
             {CONTACT.cta} — {SITE.location}
           </p>

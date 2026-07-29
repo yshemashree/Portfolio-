@@ -26,9 +26,9 @@ export default function Altitude() {
             <div
               key={item.title}
               data-reveal
-              className="border-l border-graphite-line pl-6 sm:pl-8"
+              className="group border-l border-graphite-line pl-6 transition-all duration-500 ease-precise hover:translate-x-1 hover:border-signal sm:pl-8"
             >
-              <p className="font-mono text-[11px] uppercase tracking-widest2 text-mist-dim">
+              <p className="font-mono text-[11px] uppercase tracking-widest2 text-mist-dim transition-colors duration-500 group-hover:text-signal">
                 {item.eyebrow}
               </p>
               <h3 className="mt-3 text-balance font-display text-xl font-medium leading-snug text-ink sm:text-2xl">
