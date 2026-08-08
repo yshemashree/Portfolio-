@@ -1356,12 +1356,24 @@ const css = `
 
 * { box-sizing: border-box; }
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--surface) var(--bg);
+  scrollbar-width: thin;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.28); }
+
 .hm-root {
   background: var(--bg);
   color: var(--fg);
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
-  scroll-behavior: smooth;
 }
 
 .hm-mono { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em; }
