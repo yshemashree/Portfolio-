@@ -462,18 +462,8 @@ function ContactForm() {
 }
 
 function Section({ id, children, className = "" }) {
-  const [ref, visible] = useReveal();
   return (
-    <section
-      id={id}
-      ref={ref}
-      className={`hm-section ${className}`}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0) scale(1)" : "translateY(36px) scale(0.985)",
-        transition: "opacity 0.8s cubic-bezier(.16,.8,.3,1), transform 0.8s cubic-bezier(.16,.8,.3,1)",
-      }}
-    >
+    <section id={id} className={`hm-section ${className}`}>
       <div className="hm-section-inner">{children}</div>
     </section>
   );
@@ -1356,7 +1346,7 @@ const css = `
 :root {
   --bg: #0D0E14;
   --surface: #15161D;
-  --line: rgba(255,255,255,0.28);
+  --line: transparent;
   --fg: #F2F1F7;
   --dim: #A3A7B5;
   --signal: #FF0080;
@@ -1633,7 +1623,7 @@ const css = `
 
 .hm-cta-row { display: flex; flex-wrap: wrap; gap: 28px; row-gap: 20px; }
 .hm-cta-row-center { justify-content: center; }
-.hm-cta-pair { display: inline-flex; flex-wrap: nowrap; gap: 22px; }
+.hm-cta-pair { display: inline-flex; flex-wrap: nowrap; gap: 26px; margin-top: 14px; }
 .hm-btn {
   font-size: 13.5px;
   padding: 13px 26px;
@@ -1914,7 +1904,7 @@ const css = `
 .hm-project-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hm-project-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .hm-project-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 17px; margin: 0; font-weight: 800; }
-.hm-project-body p { color: var(--dim); font-size: 13.5px; line-height: 1.65; margin: 0; font-style: italic; }
+.hm-project-body p { color: var(--dim); font-size: 13.5px; line-height: 1.65; margin: 0; }
 .hm-project-links { display: flex; gap: 16px; margin-top: auto; padding-top: 8px; }
 .hm-icon-link { display: inline-flex; align-items: center; gap: 6px; color: var(--dim); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; transition: color 0.15s; }
 .hm-icon-link:hover { color: var(--signal); }
