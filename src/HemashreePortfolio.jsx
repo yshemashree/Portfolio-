@@ -1478,14 +1478,14 @@ html {
 }
 .hm-hero { background: rgba(13,14,20,0.42); }
 .hm-section-inner {
-  max-width: 1180px;
+  max-width: 1560px;
   width: 100%;
   margin: 0 auto;
-  padding: 68px 32px;
+  padding: 96px 56px;
 }
-#skills .hm-section-inner { padding-bottom: 110px; }
-#projects .hm-section-inner { padding-top: 110px; }
-.hm-section-label { display: flex; align-items: baseline; gap: 14px; margin-bottom: 40px; }
+#skills .hm-section-inner { padding-bottom: 140px; }
+#projects .hm-section-inner { padding-top: 140px; }
+.hm-section-label { display: flex; align-items: baseline; gap: 14px; margin-bottom: 56px; }
 .hm-label-num { color: var(--bg); background: var(--signal); font-size: 13px; font-weight: 800; padding: 3px 10px; }
 .hm-section-label h2 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin: 0; font-weight: 800; letter-spacing: -0.01em; }
 
@@ -1685,7 +1685,7 @@ html {
 .hm-btn-resume { display: inline-flex; align-items: center; gap: 8px; }
 
 /* ABOUT */
-.hm-about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
+.hm-about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 72px; align-items: start; }
 .hm-about-copy { position: relative; }
 .hm-about-quote-mark {
   display: inline;
@@ -1783,8 +1783,8 @@ html {
 .hm-timeline-item {
   display: grid;
   grid-template-columns: 28px 76px 1fr;
-  gap: 20px;
-  padding-bottom: 44px;
+  gap: 28px;
+  padding-bottom: 60px;
 }
 .hm-timeline-marker { display: flex; flex-direction: column; align-items: center; }
 .hm-timeline-dot {
@@ -1826,7 +1826,7 @@ html {
 .hm-timeline-list li::before { content: "▸"; color: var(--signal); font-weight: 700; flex-shrink: 0; }
 
 /* SKILLS — simple two-column card grid, chips wrap naturally */
-.hm-skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 44px; }
+.hm-skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 56px 64px; }
 .hm-skill-card {
   border: 4px solid var(--line);
   border-radius: 5px;
@@ -1840,7 +1840,7 @@ html {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 18px 24px;
+  padding: 24px 30px;
   background: var(--surface);
   color: var(--fg);
   border-bottom: 4px solid var(--line);
@@ -1869,8 +1869,8 @@ html {
 .hm-skill-item-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  padding: 28px;
+  gap: 20px;
+  padding: 36px;
 }
 .hm-skill-item-row {
   display: flex;
@@ -1905,7 +1905,7 @@ html {
 .hm-skill-item-row:hover .hm-skill-item-name { color: var(--bg); font-weight: 700; }
 
 /* PROJECTS */
-.hm-project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.hm-project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
 .hm-project-card {
   border: 4px solid var(--line);
   border-radius: 5px;
@@ -1941,7 +1941,7 @@ html {
 }
 .hm-project-shot .hm-mono { font-size: 10.5px; }
 .hm-project-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.hm-project-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.hm-project-body { padding: 30px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
 .hm-project-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 17px; margin: 0; font-weight: 800; }
 .hm-project-body p { color: var(--dim); font-size: 13.5px; line-height: 1.65; margin: 0; }
 .hm-project-links { display: flex; gap: 16px; margin-top: auto; padding-top: 8px; }
@@ -1952,21 +1952,21 @@ html {
 .hm-tag { font-size: 11px; font-weight: 700; border: 2.5px solid var(--line); border-radius: 100px; padding: 4px 11px; color: var(--dim); background: var(--bg); box-shadow: 2px 2px 0 var(--shadow); }
 
 /* ACHIEVEMENTS — medal-coded cards in a 2-column grid (reads left-right, top-to-bottom) */
-.hm-achieve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+.hm-achieve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
 .hm-achieve-card {
   display: flex;
-  gap: 18px;
+  gap: 22px;
   border: 4px solid var(--line);
   border-radius: 5px;
-  padding: 20px;
+  padding: 26px;
   background: var(--surface);
   box-shadow: 8px 8px 0 var(--shadow);
   transition: border-color 0.12s, transform 0.12s, box-shadow 0.12s;
 }
 .hm-achieve-card:hover { border-color: var(--rank-color, var(--signal)); transform: translate(4px, 4px); box-shadow: 0px 0px 0 var(--shadow); }
 .hm-achieve-media {
-  width: 128px;
-  height: 128px;
+  width: 144px;
+  height: 144px;
   border-radius: 5px;
   flex-shrink: 0;
   overflow: hidden;
@@ -2036,7 +2036,7 @@ html {
 /* CONTACT */
 .hm-contact-section { border-bottom: none; }
 
-.hm-contact-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 24px; align-items: stretch; }
+.hm-contact-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px; align-items: stretch; }
 
 .hm-contact-info-card, .hm-contact-form-card {
   border: 3px solid var(--line);
@@ -2137,9 +2137,9 @@ html {
 }
 
 .hm-footer {
-  max-width: 1140px;
+  max-width: 1560px;
   margin: 0 auto;
-  padding: 28px 32px 40px;
+  padding: 28px 56px 40px;
   display: flex;
   justify-content: space-between;
   color: var(--dim);
