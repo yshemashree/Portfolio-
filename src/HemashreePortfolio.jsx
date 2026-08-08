@@ -94,7 +94,7 @@ function useReveal() {
           obs.unobserve(el);
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.01, rootMargin: "0px 0px -8% 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -112,8 +112,8 @@ function Reveal({ children, delay = 0, className = "", style = {}, onClick }) {
       style={{
         ...style,
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0px)" : "translateY(20px)",
-        transition: `opacity 0.55s cubic-bezier(.2,.8,.3,1) ${delay}s, transform 0.55s cubic-bezier(.2,.8,.3,1) ${delay}s`,
+        transform: visible ? "translateY(0px)" : "translateY(26px)",
+        transition: `opacity 0.4s cubic-bezier(.16,1,.3,1) ${delay}s, transform 0.4s cubic-bezier(.16,1,.3,1) ${delay}s`,
       }}
     >
       {children}
@@ -1355,6 +1355,8 @@ const css = `
 }
 
 * { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; background: var(--bg); }
 
 html {
   scroll-behavior: smooth;
