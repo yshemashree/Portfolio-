@@ -1,30 +1,29 @@
-# Y S Hemashree — Portfolio
+# Hemashree Portfolio
 
-A handcrafted, editorial-museum-style portfolio landing page for Y S Hemashree — computer science student, product builder, AI enthusiast, and national hackathon winner.
-
-## Stack
-
-- Next.js 14 (App Router) + TypeScript
-- Tailwind CSS
-- GSAP (entrance sequence, scroll reveals, micro-interactions)
-- Lenis (smooth scrolling)
-- Original inline-SVG illustration (no external image assets)
-
-## Getting started
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Then open the URL Vite prints (usually http://localhost:5173).
 
-## Structure
+## Run with Claude Code
 
-- `components/Hero.tsx` — the exhibition-opening hero: background sky, artwork, typography, sidebar
-- `components/Artwork.tsx` — the original painterly illustration (inline SVG, animated hair/tail/glasses-glint)
-- `components/BackgroundClouds.tsx` — full-bleed hand-painted sky with parallax depth layers
-- `components/PaperPlanes.tsx` — drifting paper planes and notebook pages
-- `components/About.tsx`, `Work.tsx`, `Contact.tsx` — below-fold editorial sections
-- `lib/useMouseParallax.ts`, `lib/useScrollReveal.ts` — shared motion utilities
-- `lib/constants.ts` — all copy in one place
+If you have Claude Code installed, from this folder:
+
+```bash
+claude
+```
+
+then ask it to `npm install && npm run dev` for you, or run those two
+commands yourself in the terminal — either way, Vite will start a local
+dev server and open the portfolio at http://localhost:5173.
+
+## Build for production
+
+```bash
+npm run build
+npm run preview
+```
