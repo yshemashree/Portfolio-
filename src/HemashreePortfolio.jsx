@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Lenis from "lenis";
 import {
   Code2,
   Braces,
@@ -78,6 +79,27 @@ function useGoogleFonts() {
     link.href =
       "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap";
     document.head.appendChild(link);
+  }, []);
+}
+
+function useSmoothScroll() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const lenis = new Lenis({
+      duration: 1.05,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+      smoothWheel: true,
+    });
+    let raf;
+    function tick(time) {
+      lenis.raf(time);
+      raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      lenis.destroy();
+    };
   }, []);
 }
 
@@ -809,6 +831,7 @@ const STEPONE_LOGO_SRC = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wB
 
 export default function HemashreePortfolio() {
   useGoogleFonts();
+  useSmoothScroll();
   const progress = useScrollProgress();
   const active = useActiveSection(NAV_IDS);
   const photoTilt = useTilt(6);
