@@ -1478,16 +1478,16 @@ html {
 }
 .hm-hero { background: rgba(13,14,20,0.42); }
 .hm-section-inner {
-  max-width: 1180px;
+  max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  padding: 68px 32px;
+  padding: 72px 36px;
 }
 #skills .hm-section-inner { padding-bottom: 110px; }
 #projects .hm-section-inner { padding-top: 110px; }
 .hm-section-label { display: flex; align-items: baseline; gap: 14px; margin-bottom: 40px; }
 .hm-label-num { color: var(--bg); background: var(--signal); font-size: 13px; font-weight: 800; padding: 3px 10px; }
-.hm-section-label h2 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin: 0; font-weight: 800; letter-spacing: -0.01em; }
+.hm-section-label h2 { font-family: 'Space Grotesk', sans-serif; font-size: 36px; margin: 0; font-weight: 800; letter-spacing: -0.01em; }
 
 /* HERO */
 .hm-hero { position: relative; padding-top: 0; overflow: hidden; }
@@ -1582,7 +1582,7 @@ html {
 .hm-hero-name {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  font-size: clamp(44px, 6.4vw, 76px);
+  font-size: clamp(48px, 6.8vw, 82px);
   line-height: 1.02;
   margin: 0 0 22px;
   letter-spacing: -0.02em;
@@ -1591,7 +1591,7 @@ html {
 .hm-hero-name-accent { color: var(--lime); }
 .hm-hero-sub {
   color: var(--dim);
-  font-size: clamp(15px, 1.6vw, 17px);
+  font-size: clamp(16px, 1.7vw, 18px);
   max-width: 480px;
   line-height: 1.65;
   margin: 0 0 32px;
@@ -1716,7 +1716,7 @@ html {
   line-height: 1.4 !important;
   margin: 0 0 16px !important;
 }
-.hm-about-copy p { color: var(--dim); font-size: 14.5px; line-height: 1.7; margin: 0 0 13px; text-align: left; }
+.hm-about-copy p { color: var(--dim); font-size: 15.5px; line-height: 1.7; margin: 0 0 13px; text-align: left; }
 .hm-about-emphasis {
   color: var(--bg) !important;
   background: var(--lime);
@@ -1819,10 +1819,10 @@ html {
 .hm-timeline-photo .hm-mono { font-size: 8.5px; }
 .hm-timeline-logo { width: 100%; height: 100%; object-fit: cover; }
 .hm-timeline-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.hm-timeline-head h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; margin: 0; }
+.hm-timeline-head h3 { font-family: 'Space Grotesk', sans-serif; font-size: 19px; margin: 0; }
 .hm-timeline-org { color: var(--lime); font-size: 13px; margin: 4px 0 12px; font-weight: 600; }
 .hm-timeline-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.hm-timeline-list li { color: var(--dim); font-size: 14px; line-height: 1.6; display: flex; gap: 10px; }
+.hm-timeline-list li { color: var(--dim); font-size: 15px; line-height: 1.6; display: flex; gap: 10px; }
 .hm-timeline-list li::before { content: "▸"; color: var(--signal); font-weight: 700; flex-shrink: 0; }
 
 /* SKILLS — simple two-column card grid, chips wrap naturally */
@@ -1942,7 +1942,7 @@ html {
 .hm-project-shot .hm-mono { font-size: 10.5px; }
 .hm-project-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hm-project-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
-.hm-project-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 17px; margin: 0; font-weight: 800; }
+.hm-project-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; margin: 0; font-weight: 800; }
 .hm-project-body p { color: var(--dim); font-size: 13.5px; line-height: 1.65; margin: 0; }
 .hm-project-links { display: flex; gap: 16px; margin-top: auto; padding-top: 8px; }
 .hm-icon-link { display: inline-flex; align-items: center; gap: 6px; color: var(--dim); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; transition: color 0.15s; }
@@ -1991,7 +1991,7 @@ html {
   border-radius: 100px;
   margin-bottom: 10px;
 }
-.hm-achieve-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 15.5px; margin: 0 0 4px; line-height: 1.3; }
+.hm-achieve-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 16.5px; margin: 0 0 4px; line-height: 1.3; }
 .hm-achieve-org { font-size: 10.5px; line-height: 1.4; display: block; }
 .hm-achieve-body p { color: var(--dim); font-size: 12.5px; line-height: 1.6; margin: 8px 0 12px; }
 .hm-achieve-link { display: inline-flex; align-items: center; gap: 6px; color: var(--lime); text-decoration: none; font-size: 11px; font-weight: 600; margin-top: auto; background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; }
