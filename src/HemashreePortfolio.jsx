@@ -1346,7 +1346,7 @@ const css = `
 :root {
   --bg: #0D0E14;
   --surface: #15161D;
-  --line: transparent;
+  --line: rgba(255,255,255,0.28);
   --fg: #F2F1F7;
   --dim: #A3A7B5;
   --signal: #FF0080;
@@ -1376,7 +1376,7 @@ const css = `
   align-items: center;
   justify-content: space-between;
   padding: 18px 32px;
-  border-bottom: 2px solid var(--line);
+  border-bottom: none;
   position: sticky;
   top: 0;
   background: rgba(13,14,20,0.92);
@@ -1431,7 +1431,7 @@ const css = `
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-bottom: 2px solid var(--line);
+  border-bottom: none;
   scroll-margin-top: 64px;
   position: relative;
   z-index: 1;
