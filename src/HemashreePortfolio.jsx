@@ -892,12 +892,12 @@ export default function HemashreePortfolio() {
                 View work
               </a>
               <a
-                className="hm-btn hm-btn-ghost"
+                className="hm-btn hm-btn-ghost hm-btn-resume"
                 href="https://www.linkedin.com/in/hemashree-ys/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View my LinkedIn
+                <Linkedin size={15} /> View my LinkedIn
               </a>
               <span className="hm-cta-pair">
                 <a className="hm-btn hm-btn-lime hm-btn-resume" href={RESUME_PDF_SRC} download="Hemashree_YS_Resume.pdf">
@@ -1407,7 +1407,7 @@ html {
 
 /* SCROLL PROGRESS */
 .hm-progress-track { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 50; background: var(--surface); }
-.hm-progress-fill { height: 100%; background: var(--lime); transition: width 0.1s linear; }
+.hm-progress-fill { height: 100%; background: var(--lime); }
 
 /* NAV */
 .hm-nav {
