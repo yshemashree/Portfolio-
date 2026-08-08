@@ -1736,7 +1736,7 @@ html {
   padding-top: 16px;
   border-top: 2px dashed var(--line);
 }
-.hm-about-stats { display: flex; flex-direction: column; gap: 14px; }
+.hm-about-stats { display: flex; flex-direction: column; gap: 24px; }
 .hm-stat-block {
   display: flex;
   align-items: center;
@@ -1826,7 +1826,7 @@ html {
 .hm-timeline-list li::before { content: "▸"; color: var(--signal); font-weight: 700; flex-shrink: 0; }
 
 /* SKILLS — simple two-column card grid, chips wrap naturally */
-.hm-skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 44px; }
+.hm-skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 40px 44px; }
 .hm-skill-card {
   border: 4px solid var(--line);
   border-radius: 5px;
@@ -1952,7 +1952,7 @@ html {
 .hm-tag { font-size: 11px; font-weight: 700; border: 2.5px solid var(--line); border-radius: 100px; padding: 4px 11px; color: var(--dim); background: var(--bg); box-shadow: 2px 2px 0 var(--shadow); }
 
 /* ACHIEVEMENTS — medal-coded cards in a 2-column grid (reads left-right, top-to-bottom) */
-.hm-achieve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+.hm-achieve-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 34px; }
 .hm-achieve-card {
   display: flex;
   gap: 18px;
