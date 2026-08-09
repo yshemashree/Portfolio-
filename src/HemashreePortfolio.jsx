@@ -105,6 +105,35 @@ function useSmoothScroll() {
   }, []);
 }
 
+function useHeroParallax() {
+  const copyRef = useRef(null);
+  const photoRef = useRef(null);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const heroEl = document.getElementById("hero");
+    if (!heroEl) return;
+    let raf;
+    const update = () => {
+      const rect = heroEl.getBoundingClientRect();
+      const heroHeight = heroEl.offsetHeight || window.innerHeight;
+      const progress = Math.min(Math.max(-rect.top / heroHeight, 0), 1);
+      if (copyRef.current) {
+        copyRef.current.style.transform = `translateY(${progress * -30}px)`;
+        copyRef.current.style.opacity = String(1 - progress * 0.85);
+      }
+      if (photoRef.current) {
+        photoRef.current.style.transform = `translateY(${progress * -110}px) scale(${1 - progress * 0.16})`;
+        photoRef.current.style.opacity = String(1 - progress * 0.7);
+        photoRef.current.style.filter = `blur(${progress * 3}px)`;
+      }
+      raf = requestAnimationFrame(update);
+    };
+    raf = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  return { copyRef, photoRef };
+}
+
 function useReveal() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -899,6 +928,7 @@ const STEPONE_LOGO_SRC = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wB
 export default function HemashreePortfolio() {
   useGoogleFonts();
   useSmoothScroll();
+  const heroParallax = useHeroParallax();
   const progress = useScrollProgress();
   const active = useActiveSection(NAV_IDS);
   const photoTilt = useTilt(6);
@@ -938,7 +968,7 @@ export default function HemashreePortfolio() {
       <Section id="hero" className="hm-hero">
         <HeroGlow />
         <div className="hm-hero-cols">
-          <div className="hm-hero-copy">
+          <div className="hm-hero-copy" ref={heroParallax.copyRef}>
             <p className="hm-eyebrow hm-mono">
               <StatusDot /> AI Automation &amp; ML Engineer
             </p>
@@ -980,7 +1010,7 @@ export default function HemashreePortfolio() {
             </div>
           </div>
 
-          <div className="hm-hero-photo">
+          <div className="hm-hero-photo" ref={heroParallax.photoRef}>
             <div
               className="hm-photo-frame hm-tilt"
               ref={photoTilt.ref}
@@ -1672,7 +1702,8 @@ html {
   margin: 0 0 32px;
 }
 
-.hm-hero-photo { position: relative; display: flex; justify-content: center; }
+.hm-hero-photo { position: relative; display: flex; justify-content: center; will-change: transform, opacity; }
+.hm-hero-copy { will-change: transform, opacity; }
 .hm-photo-frame {
   width: 100%;
   max-width: 340px;
