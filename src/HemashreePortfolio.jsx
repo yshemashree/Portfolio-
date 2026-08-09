@@ -1820,11 +1820,12 @@ html {
   padding-top: 16px;
   border-top: 2px dashed var(--line);
 }
-.hm-about-stats { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; height: 100%; }
+.hm-about-stats { display: flex; flex-direction: column; gap: 20px; height: 100%; }
 .hm-stat-block {
   display: flex;
   align-items: center;
   gap: 18px;
+  flex: 1;
   border: 2.5px solid var(--stat-color, var(--signal));
   border-radius: 8px;
   padding: 16px 20px;
