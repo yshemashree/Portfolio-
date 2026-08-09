@@ -892,7 +892,8 @@ const ACHIEVEMENTS = [
     ],
     photoSrc: ACHV_TRIP_SRC,
     brightness: 1.25,
-    linkedin: "#",
+    embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7492215213430079488?collapsed=1",
+    embedHeight: 628,
   },
 ];
 
