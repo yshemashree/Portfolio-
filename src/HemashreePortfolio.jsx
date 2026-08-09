@@ -155,13 +155,14 @@ function useReveal() {
   return [ref, visible];
 }
 
-function Reveal({ children, delay = 0, className = "", style = {}, onClick }) {
+function Reveal({ children, delay = 0, className = "", style = {}, onClick, onMouseMove }) {
   const [ref, visible] = useReveal();
   return (
     <div
       ref={ref}
       className={className}
       onClick={onClick}
+      onMouseMove={onMouseMove}
       style={{
         ...style,
         opacity: visible ? 1 : 0,
@@ -228,6 +229,13 @@ function useTilt(maxDeg = 7) {
     el.style.setProperty("--ry", "0deg");
   };
   return { ref, onMouseMove: handleMove, onMouseLeave: handleLeave };
+}
+
+function handleSpotlightMove(e) {
+  const el = e.currentTarget;
+  const rect = el.getBoundingClientRect();
+  el.style.setProperty("--sx", `${e.clientX - rect.left}px`);
+  el.style.setProperty("--sy", `${e.clientY - rect.top}px`);
 }
 
 function HeroGlow() {
@@ -939,6 +947,7 @@ export default function HemashreePortfolio() {
   return (
     <div className="hm-root">
       <style>{css}</style>
+      <div className="hm-noise" aria-hidden="true" />
       <NeuralHero />
 
       {/* ---------- SCROLL PROGRESS ---------- */}
@@ -1078,6 +1087,14 @@ export default function HemashreePortfolio() {
               <p className="hm-about-emphasis">
                 That intersection is where I do my best work.
               </p>
+              <div className="hm-how-i-work">
+                <span className="hm-mono hm-about-kicker">How I work</span>
+                <ul className="hm-point-list">
+                  <li><span>Build first, then explain. A working prototype earns more trust than a slide deck.</span></li>
+                  <li><span>Stay close to the problem, not just the code. Most of what I've learned came from talking to the people scope creep forgets.</span></li>
+                  <li><span>Ship, then iterate in public. Everything on this page shipped imperfect first and got better from real feedback.</span></li>
+                </ul>
+              </div>
               <p className="hm-about-offbeat">
                 Outside of work, I'm just as happy lost in a book of poetry or
                 three episodes deep into a documentary rabbit hole. And every
@@ -1092,8 +1109,9 @@ export default function HemashreePortfolio() {
               <Reveal
                 key={stat.label}
                 delay={0.1 + i * 0.05}
-                className="hm-stat-block"
+                className="hm-stat-block hm-spotlight"
                 style={{ "--stat-color": stat.color }}
+                onMouseMove={handleSpotlightMove}
               >
                 {stat.logo ? (
                   <span className="hm-stat-logo-tile">
@@ -1174,8 +1192,9 @@ export default function HemashreePortfolio() {
               <Reveal
                 key={group.title}
                 delay={i * 0.05}
-                className="hm-skill-card"
+                className="hm-skill-card hm-spotlight"
                 style={{ "--group-color": group.color }}
+                onMouseMove={handleSpotlightMove}
               >
                 <div className="hm-skill-card-head" style={{ borderBottomColor: group.color }}>
                   <span className="hm-skill-card-icon" style={{ background: group.color }}>
@@ -1219,9 +1238,10 @@ export default function HemashreePortfolio() {
             <Reveal
               key={project.name}
               delay={i * 0.05}
-              className={`hm-project-card${expandedProject === project.name ? " hm-project-card-active" : ""}`}
+              className={`hm-project-card hm-spotlight${expandedProject === project.name ? " hm-project-card-active" : ""}`}
               style={{ "--proj-color": PROJECT_ACCENTS[i % PROJECT_ACCENTS.length] }}
               onClick={() => setExpandedProject(expandedProject === project.name ? null : project.name)}
+              onMouseMove={handleSpotlightMove}
             >
               <div className="hm-project-shot">
                 {project.photoSrc ? (
@@ -1286,8 +1306,9 @@ export default function HemashreePortfolio() {
               <Reveal
                 key={a.event}
                 delay={i * 0.05}
-                className="hm-achieve-card"
+                className="hm-achieve-card hm-spotlight"
                 style={{ "--rank-color": meta.color }}
+                onMouseMove={handleSpotlightMove}
               >
                 <div
                   className="hm-achieve-media"
@@ -1488,6 +1509,32 @@ const css = `
 * { box-sizing: border-box; }
 
 html, body { margin: 0; padding: 0; background: var(--bg); }
+
+.hm-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hm-spotlight { position: relative; }
+.hm-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(260px circle at var(--sx, 50%) var(--sy, 50%), rgba(255,255,255,0.07), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.hm-spotlight:hover::before { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .hm-noise { display: none; }
+}
 
 html {
   scroll-behavior: smooth;
@@ -1844,6 +1891,8 @@ html {
   border-radius: 5px;
   margin-top: 10px !important;
 }
+.hm-how-i-work { margin-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.hm-how-i-work .hm-point-list li { color: var(--dim); font-size: 14.5px; }
 .hm-about-offbeat {
   color: var(--dim);
   font-size: 14px !important;
@@ -1863,6 +1912,7 @@ html {
   padding: 16px 20px;
   background: var(--surface);
   box-shadow: 7px 7px 0 var(--shadow);
+  overflow: hidden;
   transition: transform 0.15s, box-shadow 0.15s;
 }
 .hm-stat-block:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--shadow); }
@@ -2107,6 +2157,7 @@ html {
   background: var(--surface);
   box-shadow: 8px 8px 0 var(--shadow);
   transition: border-color 0.12s, transform 0.12s, box-shadow 0.12s;
+  overflow: hidden;
 }
 .hm-achieve-card:hover { border-color: var(--rank-color, var(--signal)); transform: translate(4px, 4px); box-shadow: 0px 0px 0 var(--shadow); }
 .hm-achieve-media {
