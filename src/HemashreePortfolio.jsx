@@ -714,6 +714,7 @@ const PROJECTS = [
     desc: "Built to merge into a digital payment app's existing transaction pipeline rather than run standalone — the live demo below ships the scoring interface only, since real fraud scoring needs a connected live transaction feed to have anything to assess. Transaction Risk Assessment Prevention: a hybrid ML fraud detection engine for UPI-style transaction streams, scoring risk in real time and routing high-risk transactions for review or block. Published at an IEEE Conference.",
     techStack: ["Python", "LSTM", "Scikit-learn", "Kafka"],
     photoSrc: PROJ_TRAP_SRC,
+    githubUrl: "https://github.com/yshemashree/TRAP-Transacation-Risk-Assessment-Prevention-",
     liveUrl: "https://yshemashree.github.io/TRAP-Transacation-Risk-Assessment-Prevention-/",
   },
   {
@@ -1060,7 +1061,7 @@ export default function HemashreePortfolio() {
                 <p className="hm-timeline-org">{item.org}</p>
                 <ul className="hm-timeline-list">
                   {item.bullets.map((b, bi) => (
-                    <li key={bi}>{b}</li>
+                    <li key={bi}><span>{b}</span></li>
                   ))}
                 </ul>
               </div>
@@ -1124,64 +1125,55 @@ export default function HemashreePortfolio() {
         </Reveal>
 
         <div className="hm-project-grid">
-          {PROJECTS.map((project, i) => {
-            const hasLink = project.driveLink
-              ? Boolean(project.driveUrl)
-              : Boolean(project.githubUrl || project.liveUrl);
-            return (
-              <Reveal
-                key={project.name}
-                delay={i * 0.05}
-                className={`hm-project-card${expandedProject === project.name ? " hm-project-card-active" : ""}${hasLink ? "" : " hm-project-card-static"}`}
-                style={{ "--proj-color": PROJECT_ACCENTS[i % PROJECT_ACCENTS.length] }}
-                onClick={hasLink ? () => setExpandedProject(expandedProject === project.name ? null : project.name) : undefined}
-              >
-                <div className="hm-project-shot">
-                  {project.photoSrc ? (
-                    <img src={project.photoSrc} alt={project.name} className="hm-project-img" />
-                  ) : (
-                    <>
-                      <ImageIcon size={26} strokeWidth={1.6} />
-                      <span className="hm-mono">add screenshot</span>
-                    </>
-                  )}
-                  {expandedProject === project.name && hasLink && (
-                    <div className="hm-project-overlay" onClick={(e) => e.stopPropagation()}>
-                      {project.driveLink ? (
-                        <a href={project.driveUrl} className="hm-project-btn hm-project-btn-live" target="_blank" rel="noopener noreferrer">
-                          <ExternalLink size={15} /> Drive Link
+          {PROJECTS.map((project, i) => (
+            <Reveal
+              key={project.name}
+              delay={i * 0.05}
+              className={`hm-project-card${expandedProject === project.name ? " hm-project-card-active" : ""}`}
+              style={{ "--proj-color": PROJECT_ACCENTS[i % PROJECT_ACCENTS.length] }}
+              onClick={() => setExpandedProject(expandedProject === project.name ? null : project.name)}
+            >
+              <div className="hm-project-shot">
+                {project.photoSrc ? (
+                  <img src={project.photoSrc} alt={project.name} className="hm-project-img" />
+                ) : (
+                  <>
+                    <ImageIcon size={26} strokeWidth={1.6} />
+                    <span className="hm-mono">add screenshot</span>
+                  </>
+                )}
+                {expandedProject === project.name && (
+                  <div className="hm-project-overlay" onClick={(e) => e.stopPropagation()}>
+                    {project.driveLink ? (
+                      <a href={project.driveUrl || "#"} className="hm-project-btn hm-project-btn-live" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink size={15} /> Drive Link
+                      </a>
+                    ) : (
+                      <>
+                        <a href={project.githubUrl || "#"} className="hm-project-btn hm-project-btn-github" target="_blank" rel="noopener noreferrer">
+                          <Github size={15} /> GitHub
                         </a>
-                      ) : (
-                        <>
-                          {project.githubUrl && (
-                            <a href={project.githubUrl} className="hm-project-btn hm-project-btn-github" target="_blank" rel="noopener noreferrer">
-                              <Github size={15} /> GitHub
-                            </a>
-                          )}
-                          {project.liveUrl && (
-                            <a href={project.liveUrl} className="hm-project-btn hm-project-btn-live" target="_blank" rel="noopener noreferrer">
-                              <ExternalLink size={15} /> Live Project
-                            </a>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  )}
-                </div>
-                <div className="hm-project-body">
-                  <h3>{project.name}</h3>
-                  <p className="hm-project-desc">{project.desc}</p>
-                  <div className="hm-tag-row">
-                    {project.techStack.map((t) => (
-                      <span key={t} className="hm-tag">
-                        {t}
-                      </span>
-                    ))}
+                        <a href={project.liveUrl || "#"} className="hm-project-btn hm-project-btn-live" target="_blank" rel="noopener noreferrer">
+                          <ExternalLink size={15} /> Live Project
+                        </a>
+                      </>
+                    )}
                   </div>
+                )}
+              </div>
+              <div className="hm-project-body">
+                <h3>{project.name}</h3>
+                <p className="hm-project-desc">{project.desc}</p>
+                <div className="hm-tag-row">
+                  {project.techStack.map((t) => (
+                    <span key={t} className="hm-tag">
+                      {t}
+                    </span>
+                  ))}
                 </div>
-              </Reveal>
-            );
-          })}
+              </div>
+            </Reveal>
+          ))}
         </div>
       </Section>
 
@@ -1503,7 +1495,7 @@ html {
 #projects .hm-section-inner { padding-top: 110px; }
 .hm-section-label { display: flex; align-items: baseline; gap: 14px; margin-bottom: 40px; }
 .hm-label-num { color: var(--bg); background: var(--signal); font-size: 13px; font-weight: 800; padding: 3px 10px; }
-.hm-section-label h2 { font-family: 'Space Grotesk', sans-serif; font-size: 36px; margin: 0; font-weight: 800; letter-spacing: -0.01em; }
+.hm-section-label h2 { font-family: 'Space Grotesk', sans-serif; font-size: 38px; margin: 0; font-weight: 800; letter-spacing: -0.01em; }
 
 /* HERO */
 .hm-hero { position: relative; padding-top: 0; overflow: hidden; }
@@ -1741,7 +1733,7 @@ html {
   line-height: 1.4 !important;
   margin: 0 0 16px !important;
 }
-.hm-about-copy p { color: var(--dim); font-size: 15.5px; line-height: 1.7; margin: 0 0 13px; text-align: left; }
+.hm-about-copy p { color: var(--dim); font-size: 16.5px; line-height: 1.75; margin: 0 0 13px; text-align: justify; text-justify: inter-word; hyphens: auto; }
 .hm-about-emphasis {
   color: var(--bg) !important;
   background: var(--lime);
@@ -1847,8 +1839,9 @@ html {
 .hm-timeline-head h3 { font-family: 'Space Grotesk', sans-serif; font-size: 19px; margin: 0; }
 .hm-timeline-org { color: var(--lime); font-size: 13px; margin: 4px 0 12px; font-weight: 600; }
 .hm-timeline-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.hm-timeline-list li { color: var(--dim); font-size: 15px; line-height: 1.6; display: flex; gap: 10px; }
+.hm-timeline-list li { color: var(--dim); font-size: 15.5px; line-height: 1.65; display: flex; gap: 10px; align-items: flex-start; }
 .hm-timeline-list li::before { content: "▸"; color: var(--signal); font-weight: 700; flex-shrink: 0; }
+.hm-timeline-list li span { text-align: justify; text-justify: inter-word; }
 
 /* SKILLS — simple two-column card grid, chips wrap naturally */
 .hm-skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 40px 44px; }
@@ -1944,8 +1937,6 @@ html {
   cursor: pointer;
 }
 .hm-project-card:hover { border-color: var(--proj-color, var(--signal)); transform: translate(4px, 4px); box-shadow: 0px 0px 0 var(--shadow); }
-.hm-project-card-static { cursor: default; }
-.hm-project-card-static:hover { border-color: var(--line); transform: none; box-shadow: 9px 9px 0 var(--shadow); }
 .hm-project-card-active {
   border-color: var(--proj-color, var(--signal));
   box-shadow: 11px 11px 0 var(--shadow);
@@ -1996,7 +1987,7 @@ html {
 .hm-project-btn-live { background: var(--lime); color: var(--bg); }
 .hm-project-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .hm-project-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; margin: 0; font-weight: 800; }
-.hm-project-body p { color: var(--dim); font-size: 13.5px; line-height: 1.65; margin: 0; }
+.hm-project-body p { color: var(--dim); font-size: 14.5px; line-height: 1.7; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto; }
 
 .hm-tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .hm-tag { font-size: 11px; font-weight: 700; border: 2.5px solid var(--line); border-radius: 100px; padding: 4px 11px; color: var(--dim); background: var(--bg); box-shadow: 2px 2px 0 var(--shadow); }
@@ -2043,7 +2034,7 @@ html {
 }
 .hm-achieve-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 16.5px; margin: 0 0 4px; line-height: 1.3; }
 .hm-achieve-org { font-size: 10.5px; line-height: 1.4; display: block; }
-.hm-achieve-body p { color: var(--dim); font-size: 12.5px; line-height: 1.6; margin: 8px 0 12px; }
+.hm-achieve-body p { color: var(--dim); font-size: 13.5px; line-height: 1.65; margin: 8px 0 12px; text-align: justify; text-justify: inter-word; }
 .hm-achieve-link { display: inline-flex; align-items: center; gap: 6px; color: var(--lime); text-decoration: none; font-size: 11px; font-weight: 600; margin-top: auto; background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; }
 .hm-achieve-link:hover { text-decoration: underline; }
 
