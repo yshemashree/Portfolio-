@@ -679,7 +679,7 @@ const PROJECTS = [
   {
     name: "FDX",
     desc: [
-      "Real-time face detection and matching engine — upload a set of target faces and it scans a photo library, surfacing every match with a confidence score.",
+      "Real-time face detection and matching engine that scans a photo library against a set of target faces, surfacing every match with a confidence score.",
       "GPU-accelerated inference, runs entirely offline: no cloud round-trip, nothing leaves the machine.",
       "Set up locally following the instructions in the repository rather than opened as a hosted demo.",
       "Built to plug into an existing photo pipeline or event platform rather than run as a standalone tool.",
@@ -692,7 +692,7 @@ const PROJECTS = [
     name: "Contexta",
     desc: [
       "Built to merge into a company's existing information security stack rather than run standalone.",
-      "The live demo below ships the frontend only — real scoring needs that stack's own security feeds to have anything to analyze.",
+      "The live demo below ships the frontend only. Real scoring needs that stack's own security feeds to have anything to analyze.",
       "Autonomous context-aware threat intelligence and business risk platform, combining ML with contextual threat analysis.",
       "Turns raw security signals into a live SOC command view.",
     ],
@@ -702,7 +702,7 @@ const PROJECTS = [
   {
     name: "BrandScope",
     desc: [
-      "AI pipeline intelligence engine for company research — drop a URL and it fires 10 parallel intelligence pipelines.",
+      "AI pipeline intelligence engine for company research. Drop a URL and it fires 10 parallel intelligence pipelines.",
       "Covers company overview, competitor mapping, decision-maker ID, and verified contacts, fully researched before the first call.",
       "Built to hook into a team's CRM or outreach tools rather than work in isolation.",
     ],
@@ -712,7 +712,7 @@ const PROJECTS = [
   {
     name: "VIGIL",
     desc: [
-      "Vital Intelligence for Guided Intervention and Logistics — a smart patient triage system.",
+      "Vital Intelligence for Guided Intervention and Logistics: a smart patient triage system.",
       "An 8-step AI pipeline with SHAP explainability, digital twin simulation, and deterioration detection.",
       "Turns patient vitals into a live, explainable risk assessment.",
       "Built to connect to an existing EHR rather than replace hospital record-keeping.",
@@ -737,7 +737,7 @@ const PROJECTS = [
     name: "TRAP",
     desc: [
       "Built to merge into a digital payment app's existing transaction pipeline rather than run standalone.",
-      "The live demo below ships the scoring interface only — real fraud scoring needs a connected live transaction feed to have anything to assess.",
+      "The live demo below ships the scoring interface only. Real fraud scoring needs a connected live transaction feed to have anything to assess.",
       "Transaction Risk Assessment Prevention: a hybrid ML fraud detection engine for UPI-style transaction streams.",
       "Scores risk in real time and routes high-risk transactions for review or block.",
       "Published at an IEEE Conference.",
@@ -858,7 +858,7 @@ const ACHIEVEMENTS = [
     rank: "trip",
     desc: [
       "Earned a paid internship with StepOneXP and, through strong performance, a fully company-funded trip to TechHR at Yashobhoomi, Delhi.",
-      "Experienced one of Asia's largest HR & technology networking events.",
+      "Experienced TechHR, Asia's largest HR & technology networking event.",
       "Gained first-hand exposure to large-scale event execution, industry networking, and experiential marketing.",
     ],
     photoSrc: ACHV_TRIP_SRC,
@@ -1553,10 +1553,10 @@ html {
 }
 .hm-hero { background: rgba(13,14,20,0.42); }
 .hm-section-inner {
-  max-width: 1280px;
+  max-width: 1360px;
   width: 100%;
   margin: 0 auto;
-  padding: 72px 36px;
+  padding: 72px 44px;
 }
 #skills .hm-section-inner { padding-bottom: 110px; }
 #projects .hm-section-inner { padding-top: 110px; }
@@ -1769,7 +1769,7 @@ html {
 .hm-btn-resume { display: inline-flex; align-items: center; gap: 8px; }
 
 /* ABOUT */
-.hm-about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
+.hm-about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; }
 .hm-about-copy { position: relative; }
 .hm-about-quote-mark {
   display: inline;
@@ -1800,7 +1800,7 @@ html {
   line-height: 1.4 !important;
   margin: 0 0 16px !important;
 }
-.hm-about-copy p { color: var(--dim); font-size: 16.5px; line-height: 1.75; margin: 0 0 13px; text-align: justify; text-justify: inter-word; }
+.hm-about-copy p { color: var(--dim); font-size: 16.5px; line-height: 1.75; margin: 0 0 13px; }
 .hm-about-emphasis {
   color: var(--bg) !important;
   background: var(--lime);
@@ -1820,7 +1820,7 @@ html {
   padding-top: 16px;
   border-top: 2px dashed var(--line);
 }
-.hm-about-stats { display: flex; flex-direction: column; gap: 46px; }
+.hm-about-stats { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; height: 100%; }
 .hm-stat-block {
   display: flex;
   align-items: center;
@@ -1908,7 +1908,6 @@ html {
 .hm-timeline-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .hm-timeline-list li { color: var(--dim); font-size: 15.5px; line-height: 1.65; display: flex; gap: 10px; align-items: flex-start; }
 .hm-timeline-list li::before { content: "▸"; color: var(--signal); font-weight: 700; flex-shrink: 0; }
-.hm-timeline-list li span { text-align: justify; text-justify: inter-word; }
 
 /* SKILLS — simple two-column card grid, chips wrap naturally */
 .hm-skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 40px 44px; }
@@ -1990,7 +1989,7 @@ html {
 .hm-skill-item-row:hover .hm-skill-item-name { color: var(--bg); font-weight: 700; }
 
 /* PROJECTS */
-.hm-project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.hm-project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 .hm-project-card {
   border: 4px solid var(--line);
   border-radius: 5px;
@@ -2058,7 +2057,6 @@ html {
 .hm-point-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .hm-point-list li { display: flex; gap: 8px; align-items: flex-start; color: var(--dim); font-size: 14.5px; line-height: 1.65; }
 .hm-point-list li::before { content: "▸"; color: var(--signal); font-weight: 700; flex-shrink: 0; }
-.hm-point-list li span { text-align: justify; text-justify: inter-word; }
 .hm-achieve-body .hm-point-list { margin: 8px 0 12px; }
 .hm-achieve-body .hm-point-list li { font-size: 13.5px; line-height: 1.6; }
 
@@ -2066,7 +2064,7 @@ html {
 .hm-tag { font-size: 11px; font-weight: 700; border: 2.5px solid var(--line); border-radius: 100px; padding: 4px 11px; color: var(--dim); background: var(--bg); box-shadow: 2px 2px 0 var(--shadow); }
 
 /* ACHIEVEMENTS — medal-coded cards in a 2-column grid (reads left-right, top-to-bottom) */
-.hm-achieve-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 34px; }
+.hm-achieve-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 42px; }
 .hm-achieve-card {
   display: flex;
   gap: 18px;
