@@ -1621,8 +1621,8 @@ html {
   font-weight: 700;
   color: var(--fg);
 }
-.hm-photo-chip-a { top: 6%; left: -6%; }
-.hm-photo-chip-b { bottom: 8%; right: -8%; border-color: var(--signal); }
+.hm-photo-chip-a { top: 6%; left: -1%; }
+.hm-photo-chip-b { bottom: 8%; right: -1%; border-color: var(--signal); }
 
 /* marquee */
 .hm-marquee-row {
@@ -1674,6 +1674,15 @@ html {
   border: 3px solid var(--signal);
   box-shadow: 9px 9px 0 var(--shadow);
   transition: transform 0.12s, box-shadow 0.12s;
+}
+.hm-cta-row .hm-btn {
+  width: 236px;
+  height: 50px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
 .hm-btn:hover { transform: translate(4px, 4px); box-shadow: 5px 5px 0 var(--shadow); }
 .hm-btn:active { transform: translate(7px, 7px); box-shadow: 0 0 0 var(--shadow); }
@@ -1736,7 +1745,7 @@ html {
   padding-top: 16px;
   border-top: 2px dashed var(--line);
 }
-.hm-about-stats { display: flex; flex-direction: column; gap: 24px; }
+.hm-about-stats { display: flex; flex-direction: column; gap: 36px; }
 .hm-stat-block {
   display: flex;
   align-items: center;
@@ -2223,5 +2232,6 @@ html {
   .hm-contact-grid { grid-template-columns: 1fr; }
   .hm-cta-pair { flex-wrap: wrap; }
   .hm-cta-pair .hm-btn { padding: 11px 18px; font-size: 12px; }
+  .hm-cta-row .hm-btn { width: 100%; max-width: 280px; height: 46px; }
 }
 `;
