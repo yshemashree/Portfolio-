@@ -1123,7 +1123,7 @@ export default function HemashreePortfolio() {
             <Reveal
               key={project.name}
               delay={i * 0.05}
-              className={`hm-project-card${expandedProject === project.name ? " hm-project-card-expanded" : ""}`}
+              className={`hm-project-card${expandedProject === project.name ? " hm-project-card-active" : ""}`}
               style={{ "--proj-color": PROJECT_ACCENTS[i % PROJECT_ACCENTS.length] }}
               onClick={() => setExpandedProject(expandedProject === project.name ? null : project.name)}
             >
@@ -1136,6 +1136,24 @@ export default function HemashreePortfolio() {
                     <span className="hm-mono">add screenshot</span>
                   </>
                 )}
+                {expandedProject === project.name && (
+                  <div className="hm-project-overlay" onClick={(e) => e.stopPropagation()}>
+                    {project.driveLink ? (
+                      <a href="#" className="hm-project-btn hm-project-btn-live" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink size={15} /> Drive Link
+                      </a>
+                    ) : (
+                      <>
+                        <a href="#" className="hm-project-btn hm-project-btn-github" target="_blank" rel="noopener noreferrer">
+                          <Github size={15} /> GitHub
+                        </a>
+                        <a href="#" className="hm-project-btn hm-project-btn-live" target="_blank" rel="noopener noreferrer">
+                          <ExternalLink size={15} /> Live Project
+                        </a>
+                      </>
+                    )}
+                  </div>
+                )}
               </div>
               <div className="hm-project-body">
                 <h3>{project.name}</h3>
@@ -1146,22 +1164,6 @@ export default function HemashreePortfolio() {
                       {t}
                     </span>
                   ))}
-                </div>
-                <div className="hm-project-links">
-                  {project.driveLink ? (
-                    <a href="#" className="hm-icon-link hm-mono" onClick={(e) => e.stopPropagation()}>
-                      <ExternalLink size={13} /> Drive Link
-                    </a>
-                  ) : (
-                    <>
-                      <a href="#" className="hm-icon-link hm-mono" onClick={(e) => e.stopPropagation()}>
-                        <Github size={13} /> GitHub
-                      </a>
-                      <a href="#" className="hm-icon-link hm-mono" onClick={(e) => e.stopPropagation()}>
-                        <ExternalLink size={13} /> Live
-                      </a>
-                    </>
-                  )}
                 </div>
               </div>
             </Reveal>
@@ -1928,15 +1930,13 @@ html {
   cursor: pointer;
 }
 .hm-project-card:hover { border-color: var(--proj-color, var(--signal)); transform: translate(4px, 4px); box-shadow: 0px 0px 0 var(--shadow); }
-.hm-project-card-expanded {
-  grid-column: 1 / -1;
+.hm-project-card-active {
   border-color: var(--proj-color, var(--signal));
   box-shadow: 11px 11px 0 var(--shadow);
   transform: translate(-3px, -3px);
 }
-.hm-project-card-expanded .hm-project-shot { aspect-ratio: 21 / 8; }
-.hm-project-card-expanded .hm-project-body p { font-size: 14.5px; }
 .hm-project-shot {
+  position: relative;
   aspect-ratio: 16 / 10;
   border-bottom: 4px solid var(--proj-color, var(--line));
   background: var(--bg);
@@ -1950,12 +1950,37 @@ html {
 }
 .hm-project-shot .hm-mono { font-size: 10.5px; }
 .hm-project-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hm-project-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(13,14,20,0.88);
+}
+.hm-project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border: 2.5px solid var(--bg);
+  box-shadow: 4px 4px 0 var(--shadow);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.hm-project-btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--shadow); }
+.hm-project-btn-github { background: var(--fg); color: var(--bg); }
+.hm-project-btn-live { background: var(--lime); color: var(--bg); }
 .hm-project-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .hm-project-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; margin: 0; font-weight: 800; }
 .hm-project-body p { color: var(--dim); font-size: 13.5px; line-height: 1.65; margin: 0; }
-.hm-project-links { display: flex; gap: 16px; margin-top: auto; padding-top: 8px; }
-.hm-icon-link { display: inline-flex; align-items: center; gap: 6px; color: var(--dim); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; transition: color 0.15s; }
-.hm-icon-link:hover { color: var(--signal); }
 
 .hm-tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .hm-tag { font-size: 11px; font-weight: 700; border: 2.5px solid var(--line); border-radius: 100px; padding: 4px 11px; color: var(--dim); background: var(--bg); box-shadow: 2px 2px 0 var(--shadow); }
