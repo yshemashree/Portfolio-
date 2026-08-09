@@ -678,26 +678,46 @@ const PROJ_CASESTUDY_SRC = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2
 const PROJECTS = [
   {
     name: "FDX",
-    desc: "Real-time face detection and matching engine. Upload a set of target faces and it scans a photo library, surfacing every match with a confidence score, GPU-accelerated for on-the-spot inference. Runs entirely offline — no cloud round-trip, nothing leaves the machine — so it's spun up locally following the setup steps in the repository rather than opened as a hosted demo. Built to plug into an existing photo pipeline or event platform rather than run as a standalone tool.",
+    desc: [
+      "Real-time face detection and matching engine — upload a set of target faces and it scans a photo library, surfacing every match with a confidence score.",
+      "GPU-accelerated inference, runs entirely offline: no cloud round-trip, nothing leaves the machine.",
+      "Set up locally following the instructions in the repository rather than opened as a hosted demo.",
+      "Built to plug into an existing photo pipeline or event platform rather than run as a standalone tool.",
+    ],
     techStack: ["Python", "ONNX Runtime", "OpenCV", "FastAPI"],
     photoSrc: PROJ_FDX_SRC,
     localOnly: true,
   },
   {
     name: "Contexta",
-    desc: "Built to merge into a company's existing information security stack rather than run standalone — the live demo below ships the frontend only, since real scoring needs that stack's own security feeds to have anything to analyze. Autonomous context-aware threat intelligence and business risk platform: combines ML with contextual threat analysis to turn raw security signals into a live SOC command view.",
+    desc: [
+      "Built to merge into a company's existing information security stack rather than run standalone.",
+      "The live demo below ships the frontend only — real scoring needs that stack's own security feeds to have anything to analyze.",
+      "Autonomous context-aware threat intelligence and business risk platform, combining ML with contextual threat analysis.",
+      "Turns raw security signals into a live SOC command view.",
+    ],
     techStack: ["Python", "ML Pipelines", "React", "SOC Dashboards"],
     photoSrc: PROJ_CONTEXTA_SRC,
   },
   {
     name: "BrandScope",
-    desc: "AI pipeline intelligence engine for company research. Drop a URL and it fires 10 parallel intelligence pipelines, company overview, competitor mapping, decision-maker ID, verified contacts, fully researched before the first call. Built to hook into a team's CRM or outreach tools rather than work in isolation.",
+    desc: [
+      "AI pipeline intelligence engine for company research — drop a URL and it fires 10 parallel intelligence pipelines.",
+      "Covers company overview, competitor mapping, decision-maker ID, and verified contacts, fully researched before the first call.",
+      "Built to hook into a team's CRM or outreach tools rather than work in isolation.",
+    ],
     techStack: ["Agentic AI", "GPT-4o", "Node.js", "Pipelines"],
     photoSrc: PROJ_BRANDSCOPE_SRC,
   },
   {
     name: "VIGIL",
-    desc: "Vital Intelligence for Guided Intervention and Logistics. Smart patient triage system: an 8-step AI pipeline with SHAP explainability, digital twin simulation, and deterioration detection that turns patient vitals into a live, explainable risk assessment. Built to connect to an existing EHR rather than replace hospital record-keeping. The live demo runs on a free-tier deploy, so the first load can take a little while to spin up.",
+    desc: [
+      "Vital Intelligence for Guided Intervention and Logistics — a smart patient triage system.",
+      "An 8-step AI pipeline with SHAP explainability, digital twin simulation, and deterioration detection.",
+      "Turns patient vitals into a live, explainable risk assessment.",
+      "Built to connect to an existing EHR rather than replace hospital record-keeping.",
+      "Live demo runs on a free-tier deploy, so the first load can take a little while to spin up.",
+    ],
     techStack: ["Python", "XGBoost", "SHAP", "React"],
     photoSrc: PROJ_VIGIL_SRC,
     githubUrl: "https://github.com/yshemashree/VIGIL",
@@ -705,13 +725,23 @@ const PROJECTS = [
   },
   {
     name: "CodeBase",
-    desc: "A collaborative coding platform with real-time code sync, multi-user editing, and a shared workspace, on a client-server architecture built to slot alongside existing dev tooling.",
+    desc: [
+      "Collaborative coding platform with real-time code sync and multi-user editing.",
+      "Shared workspace on a client-server architecture.",
+      "Built to slot alongside existing dev tooling.",
+    ],
     techStack: ["TypeScript", "Node.js", "WebSockets", "Monorepo"],
     photoSrc: PROJ_CODEBASE_SRC,
   },
   {
     name: "TRAP",
-    desc: "Built to merge into a digital payment app's existing transaction pipeline rather than run standalone — the live demo below ships the scoring interface only, since real fraud scoring needs a connected live transaction feed to have anything to assess. Transaction Risk Assessment Prevention: a hybrid ML fraud detection engine for UPI-style transaction streams, scoring risk in real time and routing high-risk transactions for review or block. Published at an IEEE Conference.",
+    desc: [
+      "Built to merge into a digital payment app's existing transaction pipeline rather than run standalone.",
+      "The live demo below ships the scoring interface only — real fraud scoring needs a connected live transaction feed to have anything to assess.",
+      "Transaction Risk Assessment Prevention: a hybrid ML fraud detection engine for UPI-style transaction streams.",
+      "Scores risk in real time and routes high-risk transactions for review or block.",
+      "Published at an IEEE Conference.",
+    ],
     techStack: ["Python", "LSTM", "Scikit-learn", "Kafka"],
     photoSrc: PROJ_TRAP_SRC,
     githubUrl: "https://github.com/yshemashree/TRAP-Transacation-Risk-Assessment-Prevention-",
@@ -719,7 +749,10 @@ const PROJECTS = [
   },
   {
     name: "Marketing Case Study Portfolio",
-    desc: "A collection of marketing case studies breaking down positioning, messaging, and go-to-market thinking behind real products.",
+    desc: [
+      "A collection of marketing case studies breaking down positioning, messaging, and go-to-market thinking.",
+      "Built around real products, not hypotheticals.",
+    ],
     techStack: ["Product Marketing", "Positioning", "GTM Strategy"],
     photoSrc: PROJ_CASESTUDY_SRC,
     driveLink: true,
@@ -747,7 +780,10 @@ const ACHIEVEMENTS = [
     event: "Cybershield'26 Hackathon",
     org: "Ministry of Electronics and Information Technology (MeitY)",
     rank: "1st",
-    desc: "Built and positioned Contexta, a cybersecurity platform with dual-persona design and a business risk scoring engine for enterprise security workflows.",
+    desc: [
+      "Built and positioned Contexta, a cybersecurity platform with dual-persona design and a business risk scoring engine for enterprise security workflows.",
+      "Took first place among national entries, judged on real-world applicability to enterprise security operations.",
+    ],
     photoSrc: ACHV_CYBERSHIELD_SRC,
     embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7441055929242013696",
     embedHeight: 1342,
@@ -756,7 +792,11 @@ const ACHIEVEMENTS = [
     event: "AI Smart Digital National Innovation Challenge",
     org: "IIT Madras",
     rank: "1st",
-    desc: "Formulated six AI governance policies and presented findings on responsible AI governance before the Chief Justice of the Madras High Court.",
+    desc: [
+      "Formulated six AI governance policies covering transparency, accountability, and responsible deployment.",
+      "Presented findings before the Chief Justice of the Madras High Court.",
+      "Won first place among national finalists.",
+    ],
     photoSrc: ACHV_SMARTDIGITAL_SRC,
     embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7441055929242013696",
     embedHeight: 1342,
@@ -765,7 +805,11 @@ const ACHIEVEMENTS = [
     event: "StepOneXP National Industry-Level AI Buildathon",
     org: "StepOneXP",
     rank: "2nd",
-    desc: "Engineered a zero-hallucination market intelligence engine powered by 12 specialized pipelines, built on real industry data.",
+    desc: [
+      "Engineered a zero-hallucination market intelligence engine powered by 12 specialized pipelines.",
+      "Built and validated on real industry data rather than synthetic test sets.",
+      "Placed second nationally in the industry-level buildathon track.",
+    ],
     photoSrc: ACHV_STEPONE_SRC,
     embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7441055929242013696",
     embedHeight: 1342,
@@ -774,7 +818,11 @@ const ACHIEVEMENTS = [
     event: "HackGenix",
     org: "TechnoSummit, National Level Hackathon",
     rank: "2nd",
-    desc: "Developed CodeBase, a collaborative coding platform with real-time sync, multi-user editing, and a scalable client-server architecture.",
+    desc: [
+      "Developed CodeBase, a collaborative coding platform with real-time sync and multi-user editing.",
+      "Built on a scalable client-server architecture.",
+      "Placed second at TechnoSummit's national-level hackathon.",
+    ],
     photoSrc: ACHV_HACKGENIX_SRC,
     embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7373005462243352576?collapsed=1",
     embedHeight: 628,
@@ -783,7 +831,11 @@ const ACHIEVEMENTS = [
     event: "TRAP (Transaction Risk Assessment Prevention)",
     org: "IEEE Conference",
     rank: "pub",
-    desc: "Authored a paper on a hybrid ML-based fraud detection model for bank servers, for a global academic audience.",
+    desc: [
+      "Authored a paper on a hybrid ML-based fraud detection model for bank transaction servers.",
+      "Combines LSTM sequence modelling with classical scikit-learn classifiers for anomaly scoring.",
+      "Published for a global academic audience at an IEEE Conference.",
+    ],
     photoSrc: ACHV_TRAP_SRC,
     linkedin: "https://ieeexplore.ieee.org/abstract/document/11505221",
     linkLabel: "View Published Paper",
@@ -792,7 +844,10 @@ const ACHIEVEMENTS = [
     event: "Highest GPA in Department",
     org: "Consecutive for 2 semesters",
     rank: "gpa",
-    desc: "Ranked first in the department for GPA across two consecutive semesters.",
+    desc: [
+      "Ranked first in the department for GPA across two consecutive semesters.",
+      "Sustained top academic standing alongside hackathons, internships, and published research.",
+    ],
     photoSrc: ACHV_GPA_SRC,
     embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7477409246511292416?collapsed=1",
     embedHeight: 628,
@@ -801,7 +856,11 @@ const ACHIEVEMENTS = [
     event: "Earned a Fully Funded Delhi Experience",
     org: "StepOneXP — TechHR at Yashobhoomi, Delhi",
     rank: "trip",
-    desc: "Earned a paid internship opportunity with StepOneXP and, through strong performance, the opportunity to attend TechHR at Yashobhoomi, Delhi on a fully company-funded trip. Experienced one of Asia's largest HR & technology networking events and gained first-hand exposure to large-scale event execution, industry networking, and experiential marketing.",
+    desc: [
+      "Earned a paid internship with StepOneXP and, through strong performance, a fully company-funded trip to TechHR at Yashobhoomi, Delhi.",
+      "Experienced one of Asia's largest HR & technology networking events.",
+      "Gained first-hand exposure to large-scale event execution, industry networking, and experiential marketing.",
+    ],
     photoSrc: ACHV_TRIP_SRC,
     brightness: 1.25,
     linkedin: "#",
@@ -1163,7 +1222,11 @@ export default function HemashreePortfolio() {
               </div>
               <div className="hm-project-body">
                 <h3>{project.name}</h3>
-                <p className="hm-project-desc">{project.desc}</p>
+                <ul className="hm-point-list">
+                  {project.desc.map((point, pi) => (
+                    <li key={pi}><span>{point}</span></li>
+                  ))}
+                </ul>
                 <div className="hm-tag-row">
                   {project.techStack.map((t) => (
                     <span key={t} className="hm-tag">
@@ -1223,7 +1286,11 @@ export default function HemashreePortfolio() {
                   </span>
                   <h3>{a.event}</h3>
                   <span className="hm-mono hm-dim hm-achieve-org">{a.org}</span>
-                  <p>{a.desc}</p>
+                  <ul className="hm-point-list">
+                    {a.desc.map((point, pi) => (
+                      <li key={pi}><span>{point}</span></li>
+                    ))}
+                  </ul>
                   {a.embedUrl ? (
                     <button
                       type="button"
@@ -1733,7 +1800,7 @@ html {
   line-height: 1.4 !important;
   margin: 0 0 16px !important;
 }
-.hm-about-copy p { color: var(--dim); font-size: 16.5px; line-height: 1.75; margin: 0 0 13px; text-align: justify; text-justify: inter-word; hyphens: auto; }
+.hm-about-copy p { color: var(--dim); font-size: 16.5px; line-height: 1.75; margin: 0 0 13px; text-align: justify; text-justify: inter-word; }
 .hm-about-emphasis {
   color: var(--bg) !important;
   background: var(--lime);
@@ -1753,7 +1820,7 @@ html {
   padding-top: 16px;
   border-top: 2px dashed var(--line);
 }
-.hm-about-stats { display: flex; flex-direction: column; gap: 36px; }
+.hm-about-stats { display: flex; flex-direction: column; gap: 46px; }
 .hm-stat-block {
   display: flex;
   align-items: center;
@@ -1987,7 +2054,13 @@ html {
 .hm-project-btn-live { background: var(--lime); color: var(--bg); }
 .hm-project-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .hm-project-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; margin: 0; font-weight: 800; }
-.hm-project-body p { color: var(--dim); font-size: 14.5px; line-height: 1.7; margin: 0; text-align: justify; text-justify: inter-word; hyphens: auto; }
+
+.hm-point-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.hm-point-list li { display: flex; gap: 8px; align-items: flex-start; color: var(--dim); font-size: 14.5px; line-height: 1.65; }
+.hm-point-list li::before { content: "▸"; color: var(--signal); font-weight: 700; flex-shrink: 0; }
+.hm-point-list li span { text-align: justify; text-justify: inter-word; }
+.hm-achieve-body .hm-point-list { margin: 8px 0 12px; }
+.hm-achieve-body .hm-point-list li { font-size: 13.5px; line-height: 1.6; }
 
 .hm-tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .hm-tag { font-size: 11px; font-weight: 700; border: 2.5px solid var(--line); border-radius: 100px; padding: 4px 11px; color: var(--dim); background: var(--bg); box-shadow: 2px 2px 0 var(--shadow); }
@@ -2034,7 +2107,6 @@ html {
 }
 .hm-achieve-body h3 { font-family: 'Space Grotesk', sans-serif; font-size: 16.5px; margin: 0 0 4px; line-height: 1.3; }
 .hm-achieve-org { font-size: 10.5px; line-height: 1.4; display: block; }
-.hm-achieve-body p { color: var(--dim); font-size: 13.5px; line-height: 1.65; margin: 8px 0 12px; text-align: justify; text-justify: inter-word; }
 .hm-achieve-link { display: inline-flex; align-items: center; gap: 6px; color: var(--lime); text-decoration: none; font-size: 11px; font-weight: 600; margin-top: auto; background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; }
 .hm-achieve-link:hover { text-decoration: underline; }
 
