@@ -490,7 +490,7 @@ function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const body = encodeURIComponent(
-      `${form.message}\n\n— ${form.name} (${form.email})`
+      `${form.message}\n\n- ${form.name} (${form.email})`
     );
     const subject = encodeURIComponent(form.subject || "Portfolio contact");
     window.location.href = `mailto:ysbhema@gmail.com?subject=${subject}&body=${body}`;
@@ -543,9 +543,9 @@ const EXP_LOGO_COFFEEHOUSES = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAA
 
 const EXPERIENCE = [
   {
-    role: "AI Automation Intern — Team Lead, Project Brain",
+    role: "AI Automation Intern, Team Lead, Project Brain",
     org: "StepOneXP",
-    period: "08/2026 – Present",
+    period: "08/2026 - Present",
     logoSrc: EXP_LOGO_STEPONE,
     bullets: [
       "Leading Brain, an AI decision-intelligence system modelling the founder's decision-making through a Retrieval + Reasoning pipeline.",
@@ -558,7 +558,7 @@ const EXPERIENCE = [
   {
     role: "Product Management & Marketing Intern",
     org: "Social Sculpt | PostAutopsy",
-    period: "06/2026 – Present",
+    period: "06/2026 - Present",
     logoSrc: EXP_LOGO_SOCIALSCULPT,
     bullets: [
       "Diagnosed activation drop-off and contributed to a web app → browser extension pivot, driving 124% growth in 29 days across the signup funnel.",
@@ -571,7 +571,7 @@ const EXPERIENCE = [
   {
     role: "Research Intern",
     org: "IEEE",
-    period: "11/2025 – 02/2026",
+    period: "11/2025 - 02/2026",
     logoSrc: EXP_LOGO_IEEE,
     bullets: [
       "Authored a research paper, TRAP: Transaction Risk Assessment & Prevention, on a hybrid ML-based fraud detection model for banking transactions.",
@@ -583,7 +583,7 @@ const EXPERIENCE = [
   {
     role: "AI/ML Virtual Intern",
     org: "AICTE",
-    period: "04/2025 – 07/2025",
+    period: "04/2025 - 07/2025",
     logoSrc: EXP_LOGO_AICTE,
     bullets: [
       "Contributed to ML dataset processing and preparation, including data cleaning, preprocessing, and organisation for model development.",
@@ -594,13 +594,13 @@ const EXPERIENCE = [
   },
   {
     role: "Vice President & Content Lead",
-    org: "Coffee Houses — The Literature Club, CIT",
-    period: "06/2025 – 05/2026",
+    org: "Coffee Houses, The Literature Club, CIT",
+    period: "06/2025 - 05/2026",
     logoSrc: EXP_LOGO_COFFEEHOUSES,
     bullets: [
       "Led a 59-member organisation, coordinating teams across content, operations, communications, and event execution.",
       "Drove a 62% increase in new-member recruitment through strategic outreach, campus engagement, and targeted digital campaigns.",
-      "Led audience-growth initiatives generating 450–500 attendees per event through digital marketing and on-ground campaigns.",
+      "Led audience-growth initiatives generating 450-500 attendees per event through digital marketing and on-ground campaigns.",
       "Mentored incoming content leads on editorial workflow and event planning for the following term.",
     ],
     slot: 5,
@@ -776,7 +776,7 @@ const PROJECTS = [
   {
     name: "TRAP",
     desc: [
-      "Hand-built before the AI coding era — no vibecoding, just line-by-line engineering — and winner of NIT Trichy's FinTech Competition.",
+      "Hand-built line by line before the AI coding era, with no vibecoding involved, and winner of NIT Trichy's FinTech Competition.",
       "Transaction Risk Assessment Prevention: a hybrid ML fraud detection engine for UPI-style transaction streams.",
       "Built to merge into a digital payment app's existing transaction pipeline; the live demo below ships the scoring interface only, since real fraud scoring needs a connected live feed.",
       "Scores risk in real time and routes high-risk transactions for review or block.",
@@ -915,7 +915,7 @@ const ACHIEVEMENTS = [
   },
   {
     event: "Earned a Fully Funded Delhi Experience",
-    org: "StepOneXP — TechHR at Yashobhoomi, Delhi",
+    org: "StepOneXP, TechHR at Yashobhoomi, Delhi",
     rank: "trip",
     desc: [
       "Earned a paid internship with StepOneXP and, through strong performance, a fully company-funded trip to TechHR at Yashobhoomi, Delhi.",
@@ -1086,7 +1086,7 @@ export default function HemashreePortfolio() {
               </p>
               <p>
                 I'm a technologist who thinks like a product person and a
-                business mind who loves to build — sitting somewhere between
+                business mind who loves to build, sitting somewhere between
                 technology, business, and people.
               </p>
               <p>
@@ -2012,7 +2012,7 @@ html {
 .hm-timeline-list li { color: var(--dim); font-size: 15.5px; line-height: 1.65; display: flex; gap: 10px; align-items: flex-start; }
 .hm-timeline-list li::before { content: "▸"; color: var(--signal); font-weight: 700; flex-shrink: 0; }
 
-/* SKILLS — simple two-column card grid, chips wrap naturally */
+/* SKILLS: simple two-column card grid, chips wrap naturally */
 .hm-skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 40px 44px; }
 .hm-skill-card {
   border: 4px solid var(--line);
@@ -2168,7 +2168,7 @@ html {
 .hm-tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .hm-tag { font-size: 11px; font-weight: 700; border: 2.5px solid var(--line); border-radius: 100px; padding: 4px 11px; color: var(--dim); background: var(--bg); box-shadow: 2px 2px 0 var(--shadow); }
 
-/* ACHIEVEMENTS — medal-coded cards in a 2-column grid (reads left-right, top-to-bottom) */
+/* ACHIEVEMENTS: medal-coded cards in a 2-column grid (reads left-right, top-to-bottom) */
 .hm-achieve-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 42px; }
 .hm-achieve-card {
   display: flex;
