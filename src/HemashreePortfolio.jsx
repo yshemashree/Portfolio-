@@ -761,6 +761,8 @@ const PROJECTS = [
     name: "VIGIL",
     desc: [
       "Vital Intelligence for Guided Intervention and Logistics: a smart patient triage system.",
+      "Pitched to B2B SaaS ERP teams as a plug-in triage module for hospital management software.",
+      "Placed 5th at NIT Trichy's Pragyan x Kanini Software Solutions Hackathon.",
       "An 8-step AI pipeline with SHAP explainability, digital twin simulation, and deterioration detection.",
       "Turns patient vitals into a live, explainable risk assessment.",
       "Works standalone or connects to an existing EHR alongside hospital record-keeping.",
@@ -772,6 +774,20 @@ const PROJECTS = [
     liveUrl: "https://team-abxc-vigil.onrender.com/",
   },
   {
+    name: "TRAP",
+    desc: [
+      "Hand-built before the AI coding era — no vibecoding, just line-by-line engineering — and winner of NIT Trichy's FinTech Competition.",
+      "Transaction Risk Assessment Prevention: a hybrid ML fraud detection engine for UPI-style transaction streams.",
+      "Built to merge into a digital payment app's existing transaction pipeline; the live demo below ships the scoring interface only, since real fraud scoring needs a connected live feed.",
+      "Scores risk in real time and routes high-risk transactions for review or block.",
+      "Published at an IEEE Conference.",
+    ],
+    techStack: ["Python", "LSTM", "Scikit-learn", "Kafka"],
+    photoSrc: PROJ_TRAP_SRC,
+    githubUrl: "https://github.com/yshemashree/TRAP-Transacation-Risk-Assessment-Prevention-",
+    liveUrl: "https://yshemashree.github.io/TRAP-Transacation-Risk-Assessment-Prevention-/",
+  },
+  {
     name: "CodeBase",
     desc: [
       "Collaborative coding platform with real-time code sync and multi-user editing.",
@@ -780,20 +796,6 @@ const PROJECTS = [
     ],
     techStack: ["TypeScript", "Node.js", "WebSockets", "Monorepo"],
     photoSrc: PROJ_CODEBASE_SRC,
-  },
-  {
-    name: "TRAP",
-    desc: [
-      "Built to merge into a digital payment app's existing transaction pipeline rather than run standalone.",
-      "The live demo below ships the scoring interface only. Real fraud scoring needs a connected live transaction feed to have anything to assess.",
-      "Transaction Risk Assessment Prevention: a hybrid ML fraud detection engine for UPI-style transaction streams.",
-      "Scores risk in real time and routes high-risk transactions for review or block.",
-      "Published at an IEEE Conference.",
-    ],
-    techStack: ["Python", "LSTM", "Scikit-learn", "Kafka"],
-    photoSrc: PROJ_TRAP_SRC,
-    githubUrl: "https://github.com/yshemashree/TRAP-Transacation-Risk-Assessment-Prevention-",
-    liveUrl: "https://yshemashree.github.io/TRAP-Transacation-Risk-Assessment-Prevention-/",
   },
   {
     name: "Audify.ai",
