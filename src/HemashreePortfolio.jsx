@@ -2162,7 +2162,7 @@ html {
 .hm-point-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .hm-point-list li { display: flex; gap: 8px; align-items: flex-start; color: var(--dim); font-size: 14.5px; line-height: 1.65; }
 .hm-point-list li::before { content: "▸"; color: var(--signal); font-weight: 700; flex-shrink: 0; }
-.hm-point-list li.hm-point-highlight { color: var(--lime); font-weight: 600; text-shadow: 0 0 14px rgba(182, 245, 0, 0.45); }
+.hm-point-list li.hm-point-highlight { color: var(--lime); font-weight: 600; }
 .hm-point-list li.hm-point-highlight::before { color: var(--lime); }
 .hm-achieve-body .hm-point-list { margin: 8px 0 12px; }
 .hm-achieve-body .hm-point-list li { font-size: 13.5px; line-height: 1.6; }
