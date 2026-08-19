@@ -730,7 +730,7 @@ const PROJECTS = [
     techStack: ["Python", "ONNX Runtime", "OpenCV", "FastAPI"],
     photoSrc: PROJ_FDX_SRC,
     localOnly: true,
-    highlightFirst: true,
+    highlightLines: [0],
   },
   {
     name: "Contexta",
@@ -743,7 +743,7 @@ const PROJECTS = [
     ],
     techStack: ["Python", "ML Pipelines", "React", "SOC Dashboards"],
     photoSrc: PROJ_CONTEXTA_SRC,
-    highlightFirst: true,
+    highlightLines: [0],
   },
   {
     name: "BrandScope",
@@ -755,7 +755,7 @@ const PROJECTS = [
     ],
     techStack: ["Agentic AI", "GPT-4o", "Node.js", "Pipelines"],
     photoSrc: PROJ_BRANDSCOPE_SRC,
-    highlightFirst: true,
+    highlightLines: [0],
   },
   {
     name: "VIGIL",
@@ -772,6 +772,7 @@ const PROJECTS = [
     photoSrc: PROJ_VIGIL_SRC,
     githubUrl: "https://github.com/yshemashree/VIGIL",
     liveUrl: "https://team-abxc-vigil.onrender.com/",
+    highlightLines: [1, 2],
   },
   {
     name: "TRAP",
@@ -786,6 +787,7 @@ const PROJECTS = [
     photoSrc: PROJ_TRAP_SRC,
     githubUrl: "https://github.com/yshemashree/TRAP-Transacation-Risk-Assessment-Prevention-",
     liveUrl: "https://yshemashree.github.io/TRAP-Transacation-Risk-Assessment-Prevention-/",
+    highlightLines: [0],
   },
   {
     name: "CodeBase",
@@ -1293,7 +1295,7 @@ export default function HemashreePortfolio() {
                 <h3>{project.name}</h3>
                 <ul className="hm-point-list">
                   {project.desc.map((point, pi) => (
-                    <li key={pi} className={pi === 0 && project.highlightFirst ? "hm-point-highlight" : undefined}>
+                    <li key={pi} className={project.highlightLines?.includes(pi) ? "hm-point-highlight" : undefined}>
                       <span>{point}</span>
                     </li>
                   ))}
